@@ -14,7 +14,7 @@ env:
 
 jobs:
   build:
-    runs-on: macos-14                # Xcode 15.x，支持 iOS 15.4 部署目标
+    runs-on: macos-15                # Xcode 16.x：Kingfisher 8 需要 @retroactive（Swift 6 编译器）
 
     steps:
       - uses: actions/checkout@v4

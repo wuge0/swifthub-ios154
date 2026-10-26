@@ -20,6 +20,20 @@
                ReferencedContainer = "container:SwiftHub.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "620E134F963C8175205CA79D"
+               BuildableName = "SwiftHubWidget.appex"
+               BlueprintName = "SwiftHubWidget"
+               ReferencedContainer = "container:SwiftHub.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

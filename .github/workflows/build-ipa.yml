@@ -49,10 +49,24 @@ jobs:
             STRING_CATALOG_GENERATE_SYMBOLS=YES \
             build
 
-      - name: 打 entitlements（Keychain 必需）
+      - name: 检查嵌入的扩展
         run: |
           APP="build/dd/Build/Products/Release-iphoneos/${APP_NAME}.app"
           test -d "$APP" || { echo "构建产物缺失"; exit 1; }
+          echo "--- PlugIns ---"
+          ls -la "$APP/PlugIns" 2>/dev/null || echo "没有 PlugIns 目录"
+          WIDGET="$APP/PlugIns/${APP_NAME}Widget.appex"
+          if [ -d "$WIDGET" ]; then
+            echo "widget 已嵌入: $(du -sh "$WIDGET" | cut -f1)"
+            plutil -p "$WIDGET/Info.plist" | grep -E "CFBundleIdentifier|CFBundleVersion|NSExtensionPointIdentifier"
+            vtool -show-build "$WIDGET/${APP_NAME}Widget" | grep -E "minos|sdk"
+          else
+            echo "!! widget 未嵌入，构建配置有问题"; exit 1
+          fi
+
+      - name: 签名 App 与 Widget（ad-hoc）
+        run: |
+          APP="build/dd/Build/Products/Release-iphoneos/${APP_NAME}.app"
 
           cat > ent.plist <<PLIST
           <?xml version="1.0" encoding="UTF-8"?>
@@ -66,6 +80,23 @@ jobs:
           </plist>
           PLIST
 
+          WIDGET="$APP/PlugIns/${APP_NAME}Widget.appex"
+          if [ -d "$WIDGET" ]; then
+            cat > ent-widget.plist <<PLIST
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+              <key>application-identifier</key><string>${BUNDLE_ID}.widget</string>
+          </dict>
+          </plist>
+          PLIST
+            # 扩展先签，再签主程序，避免封条被后写的内容破坏
+            codesign -f -s - --entitlements ent-widget.plist "$WIDGET"
+            echo "--- widget 签名 ---"
+            codesign -dvv "$WIDGET" 2>&1 | grep -E "Identifier|Signature|TeamIdentifier" || true
+          fi
+
           # ldid 2.1.5 对这类 arm64 iOS 二进制会 assert 失败，改用 codesign 做 ad-hoc 签名
           codesign -f -s - --entitlements ent.plist "$APP/${APP_NAME}"
           echo "--- 校验签名中的 entitlements ---"
@@ -76,8 +107,10 @@ jobs:
           APP="build/dd/Build/Products/Release-iphoneos/${APP_NAME}.app"
           mkdir -p out/Payload
           cp -R "$APP" out/Payload/
-          cd out && zip -qry "${APP_NAME}-unsigned.ipa" Payload
-          ls -lh "${APP_NAME}-unsigned.ipa"
+          cd out && zip -qry "${APP_NAME}-widget-unsigned.ipa" Payload
+          ls -lh "${APP_NAME}-widget-unsigned.ipa"
+          echo "--- Payload 内容 ---"
+          find Payload -maxdepth 2 -name "*.appex"
 
       - name: 检查最低系统版本
         run: |

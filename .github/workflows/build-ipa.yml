@@ -1,0 +1,84 @@
+name: Build unsigned IPA
+
+# 在 GitHub 的 macOS runner 上编译 SwiftHub（iOS 15.4 目标），产出未签名 IPA 供 TrollStore 安装。
+# 用法：把本文件放到仓库的 .github/workflows/ 下，push 后到 Actions 页面下载 artifact。
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master, main]
+
+env:
+  APP_NAME: SwiftHub
+  BUNDLE_ID: com.public.SwiftHub   # 与工程 CFBundleIdentifier 保持一致
+
+jobs:
+  build:
+    runs-on: macos-14                # Xcode 15.x，支持 iOS 15.4 部署目标
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 环境信息
+        run: |
+          xcodebuild -version
+          pod --version || echo "CocoaPods 缺失"
+
+      - name: 安装依赖
+        run: |
+          gem install cocoapods --no-document --quiet || true
+          pod install --repo-update
+
+      - name: 编译（关闭签名）
+        run: |
+          xcodebuild \
+            -workspace "${APP_NAME}.xcworkspace" \
+            -scheme "${APP_NAME}" \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build/dd \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGN_ENTITLEMENTS="" \
+            build
+
+      - name: 打 entitlements（Keychain 必需）
+        run: |
+          APP="build/dd/Build/Products/Release-iphoneos/${APP_NAME}.app"
+          test -d "$APP" || { echo "构建产物缺失"; exit 1; }
+
+          cat > ent.plist <<PLIST
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+              <key>application-identifier</key><string>${BUNDLE_ID}</string>
+              <key>com.apple.developer.team-identifier</key><string>${BUNDLE_ID}</string>
+              <key>keychain-access-groups</key><array><string>${BUNDLE_ID}</string></array>
+          </dict>
+          </plist>
+          PLIST
+
+          brew install ldid || true
+          ldid -S ent.plist "$APP/${APP_NAME}" || echo "ldid 失败，TrollStore 侧仍可安装，但 Keychain 可能报 -34018"
+
+      - name: 打包 IPA
+        run: |
+          APP="build/dd/Build/Products/Release-iphoneos/${APP_NAME}.app"
+          mkdir -p out/Payload
+          cp -R "$APP" out/Payload/
+          cd out && zip -qry "${APP_NAME}-unsigned.ipa" Payload
+          ls -lh "${APP_NAME}-unsigned.ipa"
+
+      - name: 检查最低系统版本
+        run: |
+          APP="build/dd/Build/Products/Release-iphoneos/${APP_NAME}.app"
+          vtool -show-build "$APP/${APP_NAME}" | grep -E "minos|sdk"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.APP_NAME }}-unsigned-ipa
+          path: out/*.ipa
+          if-no-files-found: error

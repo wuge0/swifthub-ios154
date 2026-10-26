@@ -33,14 +33,15 @@ protocol Theme {
 }
 
 struct LightTheme: Theme {
-    let primary = UIColor.Material.white
-    let primaryDark = UIColor.Material.grey200
-    var secondary = UIColor.Material.red
-    var secondaryDark = UIColor.Material.red900
-    let separator = UIColor.Material.grey50
-    let text = UIColor.Material.grey900
-    let textGray = UIColor.Material.grey
-    let background = UIColor.Material.white
+    // 对照 GitHub 官方 iOS 客户端的浅色规范
+    let primary = UIColor.GitHub.canvasDefault
+    let primaryDark = UIColor.GitHub.canvasSubtle
+    var secondary = UIColor.GitHub.accent
+    var secondaryDark = UIColor.GitHub.accentEmphasis
+    let separator = UIColor.GitHub.borderDefault
+    let text = UIColor.GitHub.fgDefault
+    let textGray = UIColor.GitHub.fgMuted
+    let background = UIColor.GitHub.canvasDefault
     let statusBarStyle = UIStatusBarStyle.default
     let barStyle = UIBarStyle.default
     let keyboardAppearance = UIKeyboardAppearance.light
@@ -53,14 +54,15 @@ struct LightTheme: Theme {
 }
 
 struct DarkTheme: Theme {
-    let primary = UIColor.Material.grey800
-    let primaryDark = UIColor.Material.grey900
-    var secondary = UIColor.Material.red
-    var secondaryDark = UIColor.Material.red900
-    let separator = UIColor.Material.grey900
-    let text = UIColor.Material.grey50
-    let textGray = UIColor.Material.grey
-    let background = UIColor.Material.grey800
+    // 官方深色：底 #0D1117，卡片/导航 #161B22，描边 #30363D
+    let primary = UIColor.GitHub.darkCanvasSubtle
+    let primaryDark = UIColor.GitHub.darkCanvasDefault
+    var secondary = UIColor.GitHub.darkAccent
+    var secondaryDark = UIColor.GitHub.accent
+    let separator = UIColor.GitHub.darkBorderDefault
+    let text = UIColor.GitHub.darkFgDefault
+    let textGray = UIColor.GitHub.darkFgMuted
+    let background = UIColor.GitHub.darkCanvasDefault
     let statusBarStyle = UIStatusBarStyle.lightContent
     let barStyle = UIBarStyle.black
     let keyboardAppearance = UIKeyboardAppearance.dark
@@ -73,12 +75,13 @@ struct DarkTheme: Theme {
 }
 
 enum ColorTheme: Int {
-    case red, pink, purple, deepPurple, indigo, blue, lightBlue, cyan, teal, green, lightGreen, lime, yellow, amber, orange, deepOrange, brown, gray, blueGray
+    case red, pink, purple, deepPurple, indigo, blue, lightBlue, cyan, teal, green, lightGreen, lime, yellow, amber, orange, deepOrange, brown, gray, blueGray, github
 
-    static let allValues = [red, pink, purple, deepPurple, indigo, blue, lightBlue, cyan, teal, green, lightGreen, lime, yellow, amber, orange, deepOrange, brown, gray, blueGray]
+    static let allValues = [github, red, pink, purple, deepPurple, indigo, blue, lightBlue, cyan, teal, green, lightGreen, lime, yellow, amber, orange, deepOrange, brown, gray, blueGray]
 
     var color: UIColor {
         switch self {
+        case .github: return UIColor.GitHub.accent
         case .red: return UIColor.Material.red
         case .pink: return UIColor.Material.pink
         case .purple: return UIColor.Material.purple
@@ -103,6 +106,7 @@ enum ColorTheme: Int {
 
     var colorDark: UIColor {
         switch self {
+        case .github: return UIColor.GitHub.accentEmphasis
         case .red: return UIColor.Material.red900
         case .pink: return UIColor.Material.pink900
         case .purple: return UIColor.Material.purple900
@@ -127,6 +131,7 @@ enum ColorTheme: Int {
 
     var title: String {
         switch self {
+        case .github: return "GitHub"
         case .red: return "Red"
         case .pink: return "Pink"
         case .purple: return "Purple"
@@ -193,7 +198,9 @@ extension ThemeType {
     static func currentTheme() -> ThemeType {
         let defaults = UserDefaults.standard
         let isDark = defaults.bool(forKey: "IsDarkKey")
-        let colorTheme = ColorTheme(rawValue: defaults.integer(forKey: "ThemeKey")) ?? ColorTheme.red
+        // 首次安装默认 GitHub 蓝；已存过选择的老用户保持原样
+        let storedColor = defaults.object(forKey: "ThemeKey") as? Int
+        let colorTheme = storedColor.flatMap(ColorTheme.init(rawValue:)) ?? ColorTheme.github
         let theme = isDark ? ThemeType.dark(color: colorTheme) : ThemeType.light(color: colorTheme)
         theme.save()
         return theme

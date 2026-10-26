@@ -32,29 +32,47 @@ enum HomeTabBarItem: Int {
         }
     }
 
+    /// 图标改用 SF Symbols，与官方客户端一致（house / bell / magnifyingglass / person）
+    private func symbol(_ name: String) -> UIImage? {
+        let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular)
+        return UIImage(systemName: name, withConfiguration: config)
+    }
+
     var image: UIImage? {
         switch self {
-        case .search: return UIImage(named: "icon_tabbar_search")!
-        case .news: return UIImage(named: "icon_tabbar_news")!
-        case .notifications: return UIImage(named: "icon_tabbar_activity")!
-        case .settings: return UIImage(named: "icon_tabbar_settings")!
-        case .login: return UIImage(named: "icon_tabbar_login")!
+        case .search: return symbol("magnifyingglass")
+        case .news: return symbol("house")
+        case .notifications: return symbol("bell")
+        case .settings: return symbol("person.crop.circle")
+        case .login: return symbol("person.crop.circle.badge.plus")
         }
     }
 
+    var selectedImage: UIImage? {
+        switch self {
+        case .search: return symbol("magnifyingglass")
+        case .news: return symbol("house.fill")
+        case .notifications: return symbol("bell.fill")
+        case .settings: return symbol("person.crop.circle.fill")
+        case .login: return symbol("person.crop.circle.badge.plus")
+        }
+    }
+
+    /// 文案对齐官方：Home / Notifications / Explore / Profile
     var title: String {
         switch self {
-        case .search: return L(.homeTabBarSearchTitle)
-        case .news: return L(.homeTabBarEventsTitle)
+        case .search: return L(.homeTabBarExploreTitle)
+        case .news: return L(.homeTabBarHomeTitle)
         case .notifications: return L(.homeTabBarNotificationsTitle)
-        case .settings: return L(.homeTabBarSettingsTitle)
-        case .login: return L(.homeTabBarLoginTitle)
+        case .settings: return L(.homeTabBarProfileTitle)
+        case .login: return L(.homeTabBarSignInTitle)
         }
     }
 
     func getController(with viewModel: ViewModel, navigator: Navigator) -> UIViewController {
         let vc = controller(with: viewModel, navigator: navigator)
-        let item = UITabBarItem(title: title, image: image, tag: rawValue)
+        let item = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
+        item.tag = rawValue
         vc.tabBarItem = item
         return vc
     }
@@ -94,11 +112,13 @@ class HomeTabBarController: UITabBarController, Navigatable {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
 
-        appearance.backgroundColor = theme.primaryDark
+        // 官方：白/深底 + 顶部细线；选中蓝，未选中灰
+        appearance.backgroundColor = theme.primary
+        appearance.shadowColor = theme.separator
 
         let itemAppearance = UITabBarItemAppearance()
-        itemAppearance.normal.iconColor = theme.text
-        itemAppearance.normal.titleTextAttributes = [.foregroundColor: theme.text]
+        itemAppearance.normal.iconColor = theme.textGray
+        itemAppearance.normal.titleTextAttributes = [.foregroundColor: theme.textGray]
         itemAppearance.selected.iconColor = theme.secondary
         itemAppearance.selected.titleTextAttributes = [.foregroundColor: theme.secondary]
 

@@ -17,9 +17,13 @@ extension LocalizedKey {
     static var eventsPerformedSegmentTitle: LocalizedKey { LocalizedKey("Events.PerformedSegment.Title") }
     static var eventsReceivedSegmentTitle: LocalizedKey { LocalizedKey("Events.ReceivedSegment.Title") }
     static var homeTabBarEventsTitle: LocalizedKey { LocalizedKey("Home.TabBar.Events.Title") }
+    static var homeTabBarExploreTitle: LocalizedKey { LocalizedKey("Home.TabBar.Explore.Title") }
+    static var homeTabBarHomeTitle: LocalizedKey { LocalizedKey("Home.TabBar.Home.Title") }
     static var homeTabBarLoginTitle: LocalizedKey { LocalizedKey("Home.TabBar.Login.Title") }
     static var homeTabBarNotificationsTitle: LocalizedKey { LocalizedKey("Home.TabBar.Notifications.Title") }
+    static var homeTabBarProfileTitle: LocalizedKey { LocalizedKey("Home.TabBar.Profile.Title") }
     static var homeTabBarSearchTitle: LocalizedKey { LocalizedKey("Home.TabBar.Search.Title") }
+    static var homeTabBarSignInTitle: LocalizedKey { LocalizedKey("Home.TabBar.SignIn.Title") }
     static var homeTabBarSettingsTitle: LocalizedKey { LocalizedKey("Home.TabBar.Settings.Title") }
     static var initialNoResults: LocalizedKey { LocalizedKey("Initial.NoResults") }
     static var issuesClosedSegmentTitle: LocalizedKey { LocalizedKey("Issues.ClosedSegment.Title") }

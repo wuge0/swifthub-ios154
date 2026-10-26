@@ -30,7 +30,8 @@ class HomeTabBarViewModel: ViewModel, ViewModelType {
 
         let tabBarItems = Observable.just(authorized).map { (authorized) -> [HomeTabBarItem] in
             if authorized {
-                return [.news, .search, .notifications, .settings]
+                // 顺序对齐官方：Home / Notifications / Explore / Profile
+                return [.news, .notifications, .search, .settings]
             } else {
                 return [.search, .login, .settings]
             }

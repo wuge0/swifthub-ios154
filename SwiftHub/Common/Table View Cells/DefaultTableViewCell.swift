@@ -68,9 +68,12 @@ class DefaultTableViewCell: TableViewCell {
 
     lazy var rightImageView: ImageView = {
         let view = ImageView(frame: CGRect())
-        view.image = UIImage(named: "icon_cell_disclosure")!.template
+        // 官方用 chevron.right，比自绘箭头更接近系统样式
+        view.image = UIImage(systemName: "chevron.right",
+                             withConfiguration: UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold))
+        view.contentMode = .center
         view.snp.makeConstraints({ (make) in
-            make.width.equalTo(20)
+            make.width.equalTo(12)
         })
         return view
     }()
@@ -78,11 +81,12 @@ class DefaultTableViewCell: TableViewCell {
     override func makeUI() {
         super.makeUI()
 
-        titleLabel.theme.textColor = themeService.attribute { $0.text }
+        // 官方：仓库名/用户名按链接色显示，次要信息用弱化灰
+        titleLabel.theme.textColor = themeService.attribute { $0.secondary }
         detailLabel.theme.textColor = themeService.attribute { $0.textGray }
-        secondDetailLabel.theme.textColor = themeService.attribute { $0.text }
+        secondDetailLabel.theme.textColor = themeService.attribute { $0.textGray }
         leftImageView.theme.tintColor = themeService.attribute { $0.secondary }
-        rightImageView.theme.tintColor = themeService.attribute { $0.secondary }
+        rightImageView.theme.tintColor = themeService.attribute { $0.textGray }
 
         stackView.addArrangedSubview(leftImageView)
         stackView.addArrangedSubview(textsStackView)

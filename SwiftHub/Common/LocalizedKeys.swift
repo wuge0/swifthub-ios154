@@ -132,6 +132,7 @@ extension LocalizedKey {
     static var usersWatchersNavigationTitle: LocalizedKey { LocalizedKey("Users.WatchersNavigation.Title") }
 }
 
+// swiftlint:disable:next identifier_name
 func L(_ key: LocalizedKey) -> String {
     NSLocalizedString(key.raw, tableName: nil, bundle: .main, value: key.raw, comment: "")
 }

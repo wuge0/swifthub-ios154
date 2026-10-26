@@ -130,6 +130,8 @@ extension LocalizedKey {
     static var usersFollowingNavigationTitle: LocalizedKey { LocalizedKey("Users.FollowingNavigation.Title") }
     static var usersStargazersNavigationTitle: LocalizedKey { LocalizedKey("Users.StargazersNavigation.Title") }
     static var usersWatchersNavigationTitle: LocalizedKey { LocalizedKey("Users.WatchersNavigation.Title") }
+    static var loginOauthloginButtonTitle: LocalizedKey { LocalizedKey("Login.OAuthloginButton.Title") }
+    static var loginOauthSegmentTitle: LocalizedKey { LocalizedKey("Login.OAuthSegment.Title") }
 }
 
 // swiftlint:disable:next identifier_name

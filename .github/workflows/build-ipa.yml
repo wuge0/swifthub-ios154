@@ -42,6 +42,7 @@ jobs:
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGN_ENTITLEMENTS="" \
+            STRING_CATALOG_GENERATE_SYMBOLS=YES \
             build
 
       - name: 打 entitlements（Keychain 必需）

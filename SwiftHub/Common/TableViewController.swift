@@ -88,7 +88,7 @@ class TableViewController: ViewController, UIScrollViewDelegate {
         }).disposed(by: rx.disposeBag)
 
         error.subscribe(onNext: { [weak self] (error) in
-            self?.tableView.makeToast(error.description, title: error.title, image: UIImage(resource: .iconToastWarning))
+            self?.tableView.makeToast(error.description, title: error.title, image: UIImage(named: "icon_toast_warning"))
         }).disposed(by: rx.disposeBag)
     }
 

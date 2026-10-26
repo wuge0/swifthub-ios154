@@ -34,21 +34,21 @@ enum HomeTabBarItem: Int {
 
     var image: UIImage? {
         switch self {
-        case .search: return UIImage(resource: .iconTabbarSearch)
-        case .news: return UIImage(resource: .iconTabbarNews)
-        case .notifications: return UIImage(resource: .iconTabbarActivity)
-        case .settings: return UIImage(resource: .iconTabbarSettings)
-        case .login: return UIImage(resource: .iconTabbarLogin)
+        case .search: return UIImage(named: "icon_tabbar_search")
+        case .news: return UIImage(named: "icon_tabbar_news")
+        case .notifications: return UIImage(named: "icon_tabbar_activity")
+        case .settings: return UIImage(named: "icon_tabbar_settings")
+        case .login: return UIImage(named: "icon_tabbar_login")
         }
     }
 
     var title: String {
         switch self {
-        case .search: return String(localized: .homeTabBarSearchTitle)
-        case .news: return String(localized: .homeTabBarEventsTitle)
-        case .notifications: return String(localized: .homeTabBarNotificationsTitle)
-        case .settings: return String(localized: .homeTabBarSettingsTitle)
-        case .login: return String(localized: .homeTabBarLoginTitle)
+        case .search: return L(.homeTabBarSearchTitle)
+        case .news: return L(.homeTabBarEventsTitle)
+        case .notifications: return L(.homeTabBarNotificationsTitle)
+        case .settings: return L(.homeTabBarSettingsTitle)
+        case .login: return L(.homeTabBarLoginTitle)
         }
     }
 

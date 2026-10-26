@@ -78,11 +78,11 @@ class UsersViewModel: ViewModel, ViewModelType {
 
         let navigationTitle = mode.map({ (mode) -> String in
             switch mode {
-            case .followers: return String(localized: .usersFollowersNavigationTitle)
-            case .following: return String(localized: .usersFollowingNavigationTitle)
-            case .watchers: return String(localized: .usersWatchersNavigationTitle)
-            case .stars: return String(localized: .usersStargazersNavigationTitle)
-            case .contributors: return String(localized: .usersContributorsNavigationTitle)
+            case .followers: return L(.usersFollowersNavigationTitle)
+            case .following: return L(.usersFollowingNavigationTitle)
+            case .watchers: return L(.usersWatchersNavigationTitle)
+            case .stars: return L(.usersStargazersNavigationTitle)
+            case .contributors: return L(.usersContributorsNavigationTitle)
             }
         }).asDriver(onErrorJustReturn: "")
 

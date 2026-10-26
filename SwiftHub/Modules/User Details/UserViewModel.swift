@@ -159,75 +159,75 @@ class UserViewModel: ViewModel, ViewModelType {
             var items: [UserSectionItem] = []
 
             // Contributions
-            let contributionsCellViewModel = ContributionsCellViewModel(with: String(localized: .userContributionsCellTitle),
+            let contributionsCellViewModel = ContributionsCellViewModel(with: L(.userContributionsCellTitle),
                                                                         detail: "\(Configs.Network.githubSkylineBaseUrl)",
-                                                                        image: UIImage(resource: .iconButtonGithub).template,
+                                                                        image: UIImage(named: "icon_button_github").template,
                                                                         contributionCalendar: user.contributionCalendar)
             items.append(UserSectionItem.contributionsItem(viewModel: contributionsCellViewModel))
 
             // Created
             if let created = user.createdAt {
-                let createdCellViewModel = UserDetailCellViewModel(with: String(localized: .userCreatedCellTitle),
+                let createdCellViewModel = UserDetailCellViewModel(with: L(.userCreatedCellTitle),
                                                                    detail: created.toRelative(),
-                                                                   image: UIImage(resource: .iconCellCreated).template,
+                                                                   image: UIImage(named: "icon_cell_created").template,
                                                                    hidesDisclosure: true)
                 items.append(UserSectionItem.createdItem(viewModel: createdCellViewModel))
             }
 
             // Updated
             if let updated = user.updatedAt {
-                let updatedCellViewModel = UserDetailCellViewModel(with: String(localized: .userUpdatedCellTitle),
+                let updatedCellViewModel = UserDetailCellViewModel(with: L(.userUpdatedCellTitle),
                                                                    detail: updated.toRelative(),
-                                                                   image: UIImage(resource: .iconCellUpdated).template,
+                                                                   image: UIImage(named: "icon_cell_updated").template,
                                                                    hidesDisclosure: true)
                 items.append(UserSectionItem.updatedItem(viewModel: updatedCellViewModel))
             }
 
             if user.type == .user {
                 // Stars
-                let starsCellViewModel = UserDetailCellViewModel(with: String(localized: .userStarsCellTitle),
+                let starsCellViewModel = UserDetailCellViewModel(with: L(.userStarsCellTitle),
                                                                  detail: user.starredRepositoriesCount?.string ?? "",
-                                                                 image: UIImage(resource: .iconCellStar).template,
+                                                                 image: UIImage(named: "icon_cell_star").template,
                                                                  hidesDisclosure: false)
                 items.append(UserSectionItem.starsItem(viewModel: starsCellViewModel))
 
                 // Watching
-                let watchingCellViewModel = UserDetailCellViewModel(with: String(localized: .userWatchingCellTitle),
+                let watchingCellViewModel = UserDetailCellViewModel(with: L(.userWatchingCellTitle),
                                                                     detail: user.watchingCount?.string ?? "",
-                                                                    image: UIImage(resource: .iconCellTheme).template,
+                                                                    image: UIImage(named: "icon_cell_theme").template,
                                                                     hidesDisclosure: false)
                 items.append(UserSectionItem.watchingItem(viewModel: watchingCellViewModel))
             }
 
             // Events
-            let eventsCellViewModel = UserDetailCellViewModel(with: String(localized: .userEventsCellTitle),
+            let eventsCellViewModel = UserDetailCellViewModel(with: L(.userEventsCellTitle),
                                                               detail: "",
-                                                              image: UIImage(resource: .iconCellEvents).template,
+                                                              image: UIImage(named: "icon_cell_events").template,
                                                               hidesDisclosure: false)
             items.append(UserSectionItem.eventsItem(viewModel: eventsCellViewModel))
 
             // Company
             if let company = user.company, company.isNotEmpty {
-                let companyCellViewModel = UserDetailCellViewModel(with: String(localized: .userCompanyCellTitle),
+                let companyCellViewModel = UserDetailCellViewModel(with: L(.userCompanyCellTitle),
                                                                    detail: company,
-                                                                   image: UIImage(resource: .iconCellCompany).template,
+                                                                   image: UIImage(named: "icon_cell_company").template,
                                                                    hidesDisclosure: false)
                 items.append(UserSectionItem.companyItem(viewModel: companyCellViewModel))
             }
 
             // Blog
             if let blog = user.blog, blog.isNotEmpty {
-                let companyCellViewModel = UserDetailCellViewModel(with: String(localized: .userBlogCellTitle),
+                let companyCellViewModel = UserDetailCellViewModel(with: L(.userBlogCellTitle),
                                                                    detail: blog,
-                                                                   image: UIImage(resource: .iconCellLink).template,
+                                                                   image: UIImage(named: "icon_cell_link").template,
                                                                    hidesDisclosure: false)
                 items.append(UserSectionItem.blogItem(viewModel: companyCellViewModel))
             }
 
             // Profile Summary
-            let profileSummaryCellViewModel = UserDetailCellViewModel(with: String(localized: .userProfileSummaryCellTitle),
+            let profileSummaryCellViewModel = UserDetailCellViewModel(with: L(.userProfileSummaryCellTitle),
                                                                       detail: "\(Configs.Network.profileSummaryBaseUrl)",
-                                                                      image: UIImage(resource: .iconCellProfileSummary).template,
+                                                                      image: UIImage(named: "icon_cell_profile_summary").template,
                                                                       hidesDisclosure: false)
             items.append(UserSectionItem.profileSummaryItem(viewModel: profileSummaryCellViewModel))
 
@@ -250,10 +250,10 @@ class UserViewModel: ViewModel, ViewModelType {
             var userSections: [UserSection] = []
             userSections.append(UserSection.user(title: "", items: items))
             if pinnedItems.isNotEmpty {
-                userSections.append(UserSection.user(title: String(localized: .userPinnedSectionTitle), items: pinnedItems))
+                userSections.append(UserSection.user(title: L(.userPinnedSectionTitle), items: pinnedItems))
             }
             if organizationItems.isNotEmpty {
-                userSections.append(UserSection.user(title: String(localized: .userOrganizationsSectionTitle), items: organizationItems))
+                userSections.append(UserSection.user(title: L(.userOrganizationsSectionTitle), items: organizationItems))
             }
             return userSections
         }

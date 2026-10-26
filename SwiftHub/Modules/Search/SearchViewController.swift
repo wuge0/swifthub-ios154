@@ -21,8 +21,8 @@ enum SearchTypeSegments: Int {
 
     var title: String {
         switch self {
-        case .repositories: return String(localized: .searchRepositoriesSegmentTitle)
-        case .users: return String(localized: .searchUsersSegmentTitle)
+        case .repositories: return L(.searchRepositoriesSegmentTitle)
+        case .users: return L(.searchUsersSegmentTitle)
         }
     }
 }
@@ -32,9 +32,9 @@ enum TrendingPeriodSegments: Int {
 
     var title: String {
         switch self {
-        case .daily: return String(localized: .searchDailySegmentTitle)
-        case .weekly: return String(localized: .searchWeeklySegmentTitle)
-        case .montly: return String(localized: .searchMonthlySegmentTitle)
+        case .daily: return L(.searchDailySegmentTitle)
+        case .weekly: return L(.searchWeeklySegmentTitle)
+        case .montly: return L(.searchMonthlySegmentTitle)
         }
     }
 
@@ -52,8 +52,8 @@ enum SearchModeSegments: Int {
 
     var title: String {
         switch self {
-        case .trending: return String(localized: .searchTrendingSegmentTitle)
-        case .search: return String(localized: .searchSearchSegmentTitle)
+        case .trending: return L(.searchTrendingSegmentTitle)
+        case .search: return L(.searchSearchSegmentTitle)
         }
     }
 }
@@ -63,13 +63,13 @@ enum SortRepositoryItems: Int {
 
     var title: String {
         switch self {
-        case .bestMatch: return String(localized: .searchSortRepositoriesBestMatchTitle)
-        case .mostStars: return String(localized: .searchSortRepositoriesMostStarsTitle)
-        case .fewestStars: return String(localized: .searchSortRepositoriesFewestStarsTitle)
-        case .mostForks: return String(localized: .searchSortRepositoriesMostForksTitle)
-        case .fewestForks: return String(localized: .searchSortRepositoriesFewestForksTitle)
-        case .recentlyUpdated: return String(localized: .searchSortRepositoriesRecentlyUpdatedTitle)
-        case .lastRecentlyUpdated: return String(localized: .searchSortRepositoriesLastRecentlyUpdatedTitle)
+        case .bestMatch: return L(.searchSortRepositoriesBestMatchTitle)
+        case .mostStars: return L(.searchSortRepositoriesMostStarsTitle)
+        case .fewestStars: return L(.searchSortRepositoriesFewestStarsTitle)
+        case .mostForks: return L(.searchSortRepositoriesMostForksTitle)
+        case .fewestForks: return L(.searchSortRepositoriesFewestForksTitle)
+        case .recentlyUpdated: return L(.searchSortRepositoriesRecentlyUpdatedTitle)
+        case .lastRecentlyUpdated: return L(.searchSortRepositoriesLastRecentlyUpdatedTitle)
         }
     }
 
@@ -101,13 +101,13 @@ enum SortUserItems: Int {
 
     var title: String {
         switch self {
-        case .bestMatch: return String(localized: .searchSortUsersBestMatchTitle)
-        case .mostFollowers: return String(localized: .searchSortUsersMostFollowersTitle)
-        case .fewestFollowers: return String(localized: .searchSortUsersFewestFollowersTitle)
-        case .mostRecentlyJoined: return String(localized: .searchSortUsersMostRecentlyJoinedTitle)
-        case .leastRecentlyJoined: return String(localized: .searchSortUsersLeastRecentlyJoinedTitle)
-        case .mostRepositories: return String(localized: .searchSortUsersMostRepositoriesTitle)
-        case .fewestRepositories: return String(localized: .searchSortUsersFewestRepositoriesTitle)
+        case .bestMatch: return L(.searchSortUsersBestMatchTitle)
+        case .mostFollowers: return L(.searchSortUsersMostFollowersTitle)
+        case .fewestFollowers: return L(.searchSortUsersFewestFollowersTitle)
+        case .mostRecentlyJoined: return L(.searchSortUsersMostRecentlyJoinedTitle)
+        case .leastRecentlyJoined: return L(.searchSortUsersLeastRecentlyJoinedTitle)
+        case .mostRepositories: return L(.searchSortUsersMostRepositoriesTitle)
+        case .fewestRepositories: return L(.searchSortUsersFewestRepositoriesTitle)
         }
     }
 
@@ -136,7 +136,7 @@ enum SortUserItems: Int {
 class SearchViewController: TableViewController {
 
     lazy var rightBarButton: BarButtonItem = {
-        let view = BarButtonItem(image: UIImage(resource: .iconNavigationLanguage), style: .done, target: nil, action: nil)
+        let view = BarButtonItem(image: UIImage(named: "icon_navigation_language"), style: .done, target: nil, action: nil)
         return view
     }()
 
@@ -203,7 +203,7 @@ class SearchViewController: TableViewController {
         navigationItem.rightBarButtonItem = rightBarButton
 
         languageChanged.subscribe(onNext: { [weak self] () in
-            self?.searchBar.placeholder = String(localized: .searchSearchBarPlaceholder)
+            self?.searchBar.placeholder = L(.searchSearchBarPlaceholder)
             self?.segmentedControl.sectionTitles = [SearchTypeSegments.repositories.title,
                                                     SearchTypeSegments.users.title]
             self?.trendingPeriodSegmentedControl.sectionTitles = [TrendingPeriodSegments.daily.title,

@@ -16,9 +16,9 @@ enum LoginSegments: Int {
 
     var title: String {
         switch self {
-        case .oAuth: return String(localized: .loginOauthSegmentTitle)
-        case .personal: return String(localized: .loginPersonalSegmentTitle)
-        case .basic: return String(localized: .loginBasicSegmentTitle)
+        case .oAuth: return L(.loginOauthSegmentTitle)
+        case .personal: return L(.loginPersonalSegmentTitle)
+        case .basic: return L(.loginBasicSegmentTitle)
         }
     }
 }
@@ -43,7 +43,7 @@ class LoginViewController: ViewController {
     }()
 
     lazy var basicLogoImageView: ImageView = {
-        let view = ImageView(image: UIImage(resource: .imageNoResult).template)
+        let view = ImageView(image: UIImage(named: "image_no_result").template)
         return view
     }()
 
@@ -64,7 +64,7 @@ class LoginViewController: ViewController {
 
     lazy var basicLoginButton: Button = {
         let view = Button()
-        view.imageForNormal = UIImage(resource: .iconButtonGithub)
+        view.imageForNormal = UIImage(named: "icon_button_github")
         view.centerTextAndImage(spacing: inset)
         return view
     }()
@@ -79,7 +79,7 @@ class LoginViewController: ViewController {
     }()
 
     lazy var oAuthLogoImageView: ImageView = {
-        let view = ImageView(image: UIImage(resource: .imageNoResult).template)
+        let view = ImageView(image: UIImage(named: "image_no_result").template)
         return view
     }()
 
@@ -101,7 +101,7 @@ class LoginViewController: ViewController {
 
     lazy var oAuthLoginButton: Button = {
         let view = Button()
-        view.imageForNormal = UIImage(resource: .iconButtonGithub)
+        view.imageForNormal = UIImage(named: "icon_button_github")
         view.centerTextAndImage(spacing: inset)
         return view
     }()
@@ -116,7 +116,7 @@ class LoginViewController: ViewController {
     }()
 
     lazy var personalLogoImageView: ImageView = {
-        let view = ImageView(image: UIImage(resource: .imageNoResult).template)
+        let view = ImageView(image: UIImage(named: "image_no_result").template)
         return view
     }()
 
@@ -146,7 +146,7 @@ class LoginViewController: ViewController {
 
     lazy var personalLoginButton: Button = {
         let view = Button()
-        view.imageForNormal = UIImage(resource: .iconButtonGithub)
+        view.imageForNormal = UIImage(named: "icon_button_github")
         view.centerTextAndImage(spacing: inset)
         return view
     }()
@@ -168,18 +168,18 @@ class LoginViewController: ViewController {
         languageChanged.subscribe(onNext: { [weak self] () in
             self?.segmentedControl.sectionTitles = [LoginSegments.oAuth.title, LoginSegments.personal.title, LoginSegments.basic.title]
             // MARK: Basic
-            self?.loginTextField.placeholder = String(localized: .loginLoginTextFieldPlaceholder)
-            self?.passwordTextField.placeholder = String(localized: .loginPasswordTextFieldPlaceholder)
-            self?.basicLoginButton.titleForNormal = String(localized: .loginBasicLoginButtonTitle)
+            self?.loginTextField.placeholder = L(.loginLoginTextFieldPlaceholder)
+            self?.passwordTextField.placeholder = L(.loginPasswordTextFieldPlaceholder)
+            self?.basicLoginButton.titleForNormal = L(.loginBasicLoginButtonTitle)
             // MARK: Personal
-            self?.personalTitleLabel.text = String(localized: .loginPersonalTitleLabelText)
-            self?.personalDetailLabel.text = String(localized: .loginPersonalDetailLabelText(Configs.App.githubScope))
-            self?.personalTokenTextField.placeholder = String(localized: .loginPersonalTokenTextFieldPlaceholder)
-            self?.personalLoginButton.titleForNormal = String(localized: .loginPersonalLoginButtonTitle)
+            self?.personalTitleLabel.text = L(.loginPersonalTitleLabelText)
+            self?.personalDetailLabel.text = String(format: L(.loginPersonalDetailLabelText), Configs.App.githubScope)
+            self?.personalTokenTextField.placeholder = L(.loginPersonalTokenTextFieldPlaceholder)
+            self?.personalLoginButton.titleForNormal = L(.loginPersonalLoginButtonTitle)
             // MARK: OAuth
-            self?.titleLabel.text = String(localized: .loginTitleLabelText)
-            self?.detailLabel.text = String(localized: .loginDetailLabelText)
-            self?.oAuthLoginButton.titleForNormal = String(localized: .loginOauthloginButtonTitle)
+            self?.titleLabel.text = L(.loginTitleLabelText)
+            self?.detailLabel.text = L(.loginDetailLabelText)
+            self?.oAuthLoginButton.titleForNormal = L(.loginOauthloginButtonTitle)
         }).disposed(by: rx.disposeBag)
 
         stackView.removeFromSuperview()
@@ -229,7 +229,7 @@ class LoginViewController: ViewController {
         output.hidesOAuthLoginView.drive(oAuthLoginStackView.rx.isHidden).disposed(by: rx.disposeBag)
 
         error.subscribe(onNext: { [weak self] (error) in
-            self?.view.makeToast(error.description, title: error.title, image: UIImage(resource: .iconToastWarning))
+            self?.view.makeToast(error.description, title: error.title, image: UIImage(named: "icon_toast_warning"))
         }).disposed(by: rx.disposeBag)
     }
 }

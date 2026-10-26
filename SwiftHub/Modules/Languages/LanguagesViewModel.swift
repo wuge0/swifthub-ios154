@@ -53,7 +53,7 @@ class LanguagesViewModel: ViewModel, ViewModelType {
                     return LanguageSectionItem.languageItem(cellViewModel: cellViewModel)
                 })
 
-                let title = String(localized: .languagesAllSectionTitle)
+                let title = L(.languagesAllSectionTitle)
                 elements.append(LanguageSection.languages(title: title, items: languages))
                 return elements
         }).bind(to: elements).disposed(by: rx.disposeBag)

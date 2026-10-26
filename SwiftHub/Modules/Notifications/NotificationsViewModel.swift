@@ -89,7 +89,7 @@ class NotificationsViewModel: ViewModel, ViewModelType {
             })
 
         let navigationTitle = mode.map({ (mode) -> String in
-            return String(localized: .notificationsNavigationTitle)
+            return L(.notificationsNavigationTitle)
         }).asDriver(onErrorJustReturn: "")
 
         let imageUrl = mode.map({ (mode) -> URL? in

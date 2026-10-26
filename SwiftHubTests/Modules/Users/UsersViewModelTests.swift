@@ -31,19 +31,19 @@ class UsersViewModelTests: QuickSpec {
         describe("users list from repository") {
             it("stargazers") {
                 viewModel = UsersViewModel(mode: .stars(repository: Repository()), provider: provider)
-                let title = String(localized: .usersStargazersNavigationTitle)
+                let title = L(.usersStargazersNavigationTitle)
                 testViewModel(viewModel: viewModel, title: title, itemsPerPage: 3, disposeBag: disposeBag)
             }
 
             it("watchers") {
                 viewModel = UsersViewModel(mode: .watchers(repository: Repository()), provider: provider)
-                let title = String(localized: .usersWatchersNavigationTitle)
+                let title = L(.usersWatchersNavigationTitle)
                 testViewModel(viewModel: viewModel, title: title, itemsPerPage: 3, disposeBag: disposeBag)
             }
 
             it("contributors") {
                 viewModel = UsersViewModel(mode: .contributors(repository: Repository()), provider: provider)
-                let title = String(localized: .usersContributorsNavigationTitle)
+                let title = L(.usersContributorsNavigationTitle)
                 testViewModel(viewModel: viewModel, title: title, itemsPerPage: 2, disposeBag: disposeBag)
             }
         }
@@ -51,13 +51,13 @@ class UsersViewModelTests: QuickSpec {
         describe("users list from profile") {
             it("followers") {
                 viewModel = UsersViewModel(mode: .followers(user: User()), provider: provider)
-                let title = String(localized: .usersFollowersNavigationTitle)
+                let title = L(.usersFollowersNavigationTitle)
                 testViewModel(viewModel: viewModel, title: title, itemsPerPage: 3, disposeBag: disposeBag)
             }
 
             it("following") {
                 viewModel = UsersViewModel(mode: .following(user: User()), provider: provider)
-                let title = String(localized: .usersFollowingNavigationTitle)
+                let title = L(.usersFollowingNavigationTitle)
                 testViewModel(viewModel: viewModel, title: title, itemsPerPage: 3, disposeBag: disposeBag)
             }
         }

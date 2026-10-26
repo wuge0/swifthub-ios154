@@ -18,8 +18,8 @@ enum EventSegments: Int {
 
     var title: String {
         switch self {
-        case .received: return String(localized: .eventsReceivedSegmentTitle)
-        case .performed: return String(localized: .eventsPerformedSegmentTitle)
+        case .received: return L(.eventsReceivedSegmentTitle)
+        case .performed: return L(.eventsPerformedSegmentTitle)
         }
     }
 }

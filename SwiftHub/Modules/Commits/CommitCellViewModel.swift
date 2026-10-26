@@ -23,7 +23,7 @@ class CommitCellViewModel: DefaultTableViewCellViewModel {
         detail.accept(commit.commit?.committer?.date?.toRelative())
         secondDetail.accept(commit.sha?.slicing(from: 0, length: 7))
         imageUrl.accept(commit.committer?.avatarUrl)
-        badge.accept(UIImage(resource: .iconCellBadgeCommit).template)
+        badge.accept(UIImage(named: "icon_cell_badge_commit").template)
         badgeColor.accept(UIColor.Material.green)
     }
 }

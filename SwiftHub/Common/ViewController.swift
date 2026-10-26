@@ -40,8 +40,8 @@ class ViewController: UIViewController, Navigatable {
 
     let spaceBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
 
-    var emptyDataSetTitle = String(localized: .commonNoResults)
-    var emptyDataSetImage: UIImage? = UIImage(resource: .imageNoResult)
+    var emptyDataSetTitle = L(.commonNoResults)
+    var emptyDataSetImage: UIImage? = UIImage(named: "image_no_result")
     var emptyDataSetImageTintColor = BehaviorRelay<UIColor?>(value: nil)
 
     lazy var emptyDataSetView = EmptyDataSetView()
@@ -63,7 +63,7 @@ class ViewController: UIViewController, Navigatable {
     }()
 
     lazy var closeBarButton: BarButtonItem = {
-        let view = BarButtonItem(image: UIImage(resource: .iconNavigationClose),
+        let view = BarButtonItem(image: UIImage(named: "icon_navigation_close"),
                                  style: .plain,
                                  target: self,
                                  action: nil)
@@ -182,7 +182,7 @@ class ViewController: UIViewController, Navigatable {
         viewModel?.parsedError.asObservable().bind(to: error).disposed(by: rx.disposeBag)
 
         languageChanged.subscribe(onNext: { [weak self] () in
-            self?.emptyDataSetTitle = String(localized: .commonNoResults)
+            self?.emptyDataSetTitle = L(.commonNoResults)
         }).disposed(by: rx.disposeBag)
 
         isLoading.subscribe(onNext: { isLoading in

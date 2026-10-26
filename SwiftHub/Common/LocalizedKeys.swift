@@ -1,0 +1,137 @@
+// 由脚本生成：iOS 15.4 兼容的本地化键（String(localized:) 需要 iOS 16+）
+import Foundation
+
+struct LocalizedKey: Hashable {
+    let raw: String
+    fileprivate init(_ raw: String) { self.raw = raw }
+}
+
+extension LocalizedKey {
+    static var commonCancel: LocalizedKey { LocalizedKey("Common.Cancel") }
+    static var commonError: LocalizedKey { LocalizedKey("Common.Error") }
+    static var commonNoResults: LocalizedKey { LocalizedKey("Common.NoResults") }
+    static var commonSave: LocalizedKey { LocalizedKey("Common.Save") }
+    static var commonSearch: LocalizedKey { LocalizedKey("Common.Search") }
+    static var commonSuccess: LocalizedKey { LocalizedKey("Common.Success") }
+    static var eventsNavigationTitle: LocalizedKey { LocalizedKey("Events.Navigation.Title") }
+    static var eventsPerformedSegmentTitle: LocalizedKey { LocalizedKey("Events.PerformedSegment.Title") }
+    static var eventsReceivedSegmentTitle: LocalizedKey { LocalizedKey("Events.ReceivedSegment.Title") }
+    static var homeTabBarEventsTitle: LocalizedKey { LocalizedKey("Home.TabBar.Events.Title") }
+    static var homeTabBarLoginTitle: LocalizedKey { LocalizedKey("Home.TabBar.Login.Title") }
+    static var homeTabBarNotificationsTitle: LocalizedKey { LocalizedKey("Home.TabBar.Notifications.Title") }
+    static var homeTabBarSearchTitle: LocalizedKey { LocalizedKey("Home.TabBar.Search.Title") }
+    static var homeTabBarSettingsTitle: LocalizedKey { LocalizedKey("Home.TabBar.Settings.Title") }
+    static var initialNoResults: LocalizedKey { LocalizedKey("Initial.NoResults") }
+    static var issuesClosedSegmentTitle: LocalizedKey { LocalizedKey("Issues.ClosedSegment.Title") }
+    static var issuesOpenSegmentTitle: LocalizedKey { LocalizedKey("Issues.OpenSegment.Title") }
+    static var languagesAllSectionTitle: LocalizedKey { LocalizedKey("Languages.AllSection.Title") }
+    static var languagesNavigationTitle: LocalizedKey { LocalizedKey("Languages.Navigation.Title") }
+    static var languagesAllButtonTitle: LocalizedKey { LocalizedKey("Languages.allButton.Title") }
+    static var loginBasicLoginButtonTitle: LocalizedKey { LocalizedKey("Login.BasicLoginButton.Title") }
+    static var loginBasicSegmentTitle: LocalizedKey { LocalizedKey("Login.BasicSegment.Title") }
+    static var loginDetailLabelText: LocalizedKey { LocalizedKey("Login.DetailLabel.Text") }
+    static var loginLoginTextFieldPlaceholder: LocalizedKey { LocalizedKey("Login.LoginTextField.Placeholder") }
+    static var loginOAuthSegmentTitle: LocalizedKey { LocalizedKey("Login.OAuthSegment.Title") }
+    static var loginOAuthloginButtonTitle: LocalizedKey { LocalizedKey("Login.OAuthloginButton.Title") }
+    static var loginPasswordTextFieldPlaceholder: LocalizedKey { LocalizedKey("Login.PasswordTextField.Placeholder") }
+    static var loginPersonalDetailLabelText: LocalizedKey { LocalizedKey("Login.PersonalDetailLabel.Text") }
+    static var loginPersonalLoginButtonTitle: LocalizedKey { LocalizedKey("Login.PersonalLoginButton.Title") }
+    static var loginPersonalSegmentTitle: LocalizedKey { LocalizedKey("Login.PersonalSegment.Title") }
+    static var loginPersonalTitleLabelText: LocalizedKey { LocalizedKey("Login.PersonalTitleLabel.Text") }
+    static var loginPersonalTokenTextFieldPlaceholder: LocalizedKey { LocalizedKey("Login.PersonalTokenTextField.Placeholder") }
+    static var loginTitleLabelText: LocalizedKey { LocalizedKey("Login.TitleLabel.Text") }
+    static var notificationsAllSegmentTitle: LocalizedKey { LocalizedKey("Notifications.AllSegment.Title") }
+    static var notificationsMarkAsReadSuccess: LocalizedKey { LocalizedKey("Notifications.MarkAsRead.Success") }
+    static var notificationsNavigationTitle: LocalizedKey { LocalizedKey("Notifications.Navigation.Title") }
+    static var notificationsParticipatingSegmentTitle: LocalizedKey { LocalizedKey("Notifications.ParticipatingSegment.Title") }
+    static var notificationsUnreadSegmentTitle: LocalizedKey { LocalizedKey("Notifications.UnreadSegment.Title") }
+    static var repositoriesForksNavigationTitle: LocalizedKey { LocalizedKey("Repositories.ForksNavigation.Title") }
+    static var repositoriesRepositoriesNavigationTitle: LocalizedKey { LocalizedKey("Repositories.RepositoriesNavigation.Title") }
+    static var repositoriesStarredNavigationTitle: LocalizedKey { LocalizedKey("Repositories.StarredNavigation.Title") }
+    static var repositoryBranchesCellTitle: LocalizedKey { LocalizedKey("Repository.BranchesCell.Title") }
+    static var repositoryCommitsCellTitle: LocalizedKey { LocalizedKey("Repository.CommitsCell.Title") }
+    static var repositoryContributorsCellTitle: LocalizedKey { LocalizedKey("Repository.ContributorsCell.Title") }
+    static var repositoryCreatedCellTitle: LocalizedKey { LocalizedKey("Repository.CreatedCell.Title") }
+    static var repositoryEventsCellTitle: LocalizedKey { LocalizedKey("Repository.EventsCell.Title") }
+    static var repositoryForksButtonTitle: LocalizedKey { LocalizedKey("Repository.ForksButton.Title") }
+    static var repositoryHomepageCellTitle: LocalizedKey { LocalizedKey("Repository.HomepageCell.Title") }
+    static var repositoryIssuesCellTitle: LocalizedKey { LocalizedKey("Repository.IssuesCell.Title") }
+    static var repositoryLanguageCellTitle: LocalizedKey { LocalizedKey("Repository.LanguageCell.Title") }
+    static var repositoryNotificationsCellTitle: LocalizedKey { LocalizedKey("Repository.NotificationsCell.Title") }
+    static var repositoryParentCellTitle: LocalizedKey { LocalizedKey("Repository.ParentCell.Title") }
+    static var repositoryPullRequestsCellTitle: LocalizedKey { LocalizedKey("Repository.PullRequestsCell.Title") }
+    static var repositoryReleasesCellTitle: LocalizedKey { LocalizedKey("Repository.ReleasesCell.Title") }
+    static var repositorySizeCellTitle: LocalizedKey { LocalizedKey("Repository.SizeCell.Title") }
+    static var repositorySourceCellTitle: LocalizedKey { LocalizedKey("Repository.SourceCell.Title") }
+    static var repositoryStarsButtonTitle: LocalizedKey { LocalizedKey("Repository.StarsButton.Title") }
+    static var repositoryStarsHistoryCellTitle: LocalizedKey { LocalizedKey("Repository.StarsHistoryCell.Title") }
+    static var repositoryUpdatedCellTitle: LocalizedKey { LocalizedKey("Repository.UpdatedCell.Title") }
+    static var repositoryWatchersButtonTitle: LocalizedKey { LocalizedKey("Repository.WatchersButton.Title") }
+    static var searchDailySegmentTitle: LocalizedKey { LocalizedKey("Search.DailySegment.Title") }
+    static var searchMonthlySegmentTitle: LocalizedKey { LocalizedKey("Search.MonthlySegment.Title") }
+    static var searchRepositoriesSegmentTitle: LocalizedKey { LocalizedKey("Search.RepositoriesSegment.Title") }
+    static var searchRepositoriesTotalCountTitle: LocalizedKey { LocalizedKey("Search.RepositoriesTotalCount.Title") }
+    static var searchSearchBarPlaceholder: LocalizedKey { LocalizedKey("Search.SearchBar.Placeholder") }
+    static var searchSearchSectionTitle: LocalizedKey { LocalizedKey("Search.SearchSection.Title") }
+    static var searchSearchSectionWithLanguageTitle: LocalizedKey { LocalizedKey("Search.SearchSectionWithLanguage.Title") }
+    static var searchSearchSegmentTitle: LocalizedKey { LocalizedKey("Search.SearchSegment.Title") }
+    static var searchSortRepositoriesBestMatchTitle: LocalizedKey { LocalizedKey("Search.SortRepositories.BestMatch.Title") }
+    static var searchSortRepositoriesFewestForksTitle: LocalizedKey { LocalizedKey("Search.SortRepositories.FewestForks.Title") }
+    static var searchSortRepositoriesFewestStarsTitle: LocalizedKey { LocalizedKey("Search.SortRepositories.FewestStars.Title") }
+    static var searchSortRepositoriesLastRecentlyUpdatedTitle: LocalizedKey { LocalizedKey("Search.SortRepositories.LastRecentlyUpdated.Title") }
+    static var searchSortRepositoriesMostForksTitle: LocalizedKey { LocalizedKey("Search.SortRepositories.MostForks.Title") }
+    static var searchSortRepositoriesMostStarsTitle: LocalizedKey { LocalizedKey("Search.SortRepositories.MostStars.Title") }
+    static var searchSortRepositoriesRecentlyUpdatedTitle: LocalizedKey { LocalizedKey("Search.SortRepositories.RecentlyUpdated.Title") }
+    static var searchSortUsersBestMatchTitle: LocalizedKey { LocalizedKey("Search.SortUsers.BestMatch.Title") }
+    static var searchSortUsersFewestFollowersTitle: LocalizedKey { LocalizedKey("Search.SortUsers.FewestFollowers.Title") }
+    static var searchSortUsersFewestRepositoriesTitle: LocalizedKey { LocalizedKey("Search.SortUsers.FewestRepositories.Title") }
+    static var searchSortUsersLeastRecentlyJoinedTitle: LocalizedKey { LocalizedKey("Search.SortUsers.LeastRecentlyJoined.Title") }
+    static var searchSortUsersMostFollowersTitle: LocalizedKey { LocalizedKey("Search.SortUsers.MostFollowers.Title") }
+    static var searchSortUsersMostRecentlyJoinedTitle: LocalizedKey { LocalizedKey("Search.SortUsers.MostRecentlyJoined.Title") }
+    static var searchSortUsersMostRepositoriesTitle: LocalizedKey { LocalizedKey("Search.SortUsers.MostRepositories.Title") }
+    static var searchTrendingSectionTitle: LocalizedKey { LocalizedKey("Search.TrendingSection.Title") }
+    static var searchTrendingSectionWithLanguageTitle: LocalizedKey { LocalizedKey("Search.TrendingSectionWithLanguage.Title") }
+    static var searchTrendingSegmentTitle: LocalizedKey { LocalizedKey("Search.TrendingSegment.Title") }
+    static var searchUsersSegmentTitle: LocalizedKey { LocalizedKey("Search.UsersSegment.Title") }
+    static var searchUsersTotalCountTitle: LocalizedKey { LocalizedKey("Search.UsersTotalCount.Title") }
+    static var searchWeeklySegmentTitle: LocalizedKey { LocalizedKey("Search.WeeklySegment.Title") }
+    static var settingsAccountSectionTitle: LocalizedKey { LocalizedKey("Settings.AccountSection.Title") }
+    static var settingsAcknowledgementsTitle: LocalizedKey { LocalizedKey("Settings.Acknowledgements.Title") }
+    static var settingsLanguageTitle: LocalizedKey { LocalizedKey("Settings.Language.Title") }
+    static var settingsLogOutTitle: LocalizedKey { LocalizedKey("Settings.LogOut.Title") }
+    static var settingsLogoutAlertConfirmButtonTitle: LocalizedKey { LocalizedKey("Settings.Logout.Alert.ConfirmButton.Title") }
+    static var settingsLogoutAlertMessage: LocalizedKey { LocalizedKey("Settings.Logout.Alert.Message") }
+    static var settingsNavigationTitle: LocalizedKey { LocalizedKey("Settings.Navigation.Title") }
+    static var settingsNightModeTitle: LocalizedKey { LocalizedKey("Settings.NightMode.Title") }
+    static var settingsPreferencesSectionTitle: LocalizedKey { LocalizedKey("Settings.PreferencesSection.Title") }
+    static var settingsProjectsSectionTitle: LocalizedKey { LocalizedKey("Settings.ProjectsSection.Title") }
+    static var settingsRemoveCacheTitle: LocalizedKey { LocalizedKey("Settings.RemoveCache.Title") }
+    static var settingsSupportSectionTitle: LocalizedKey { LocalizedKey("Settings.SupportSection.Title") }
+    static var settingsThemeTitle: LocalizedKey { LocalizedKey("Settings.Theme.Title") }
+    static var themeNavigationTitle: LocalizedKey { LocalizedKey("Theme.Navigation.Title") }
+    static var toastConnectionBackMessage: LocalizedKey { LocalizedKey("Toast.ConnectionBack.Message") }
+    static var toastConnectionLostMessage: LocalizedKey { LocalizedKey("Toast.ConnectionLost.Message") }
+    static var userBlogCellTitle: LocalizedKey { LocalizedKey("User.BlogCell.Title") }
+    static var userCompanyCellTitle: LocalizedKey { LocalizedKey("User.CompanyCell.Title") }
+    static var userContributionsCellTitle: LocalizedKey { LocalizedKey("User.ContributionsCell.Title") }
+    static var userCreatedCellTitle: LocalizedKey { LocalizedKey("User.CreatedCell.Title") }
+    static var userEventsCellTitle: LocalizedKey { LocalizedKey("User.EventsCell.Title") }
+    static var userFollowersButtonTitle: LocalizedKey { LocalizedKey("User.FollowersButton.Title") }
+    static var userFollowingButtonTitle: LocalizedKey { LocalizedKey("User.FollowingButton.Title") }
+    static var userOrganizationsSectionTitle: LocalizedKey { LocalizedKey("User.OrganizationsSection.Title") }
+    static var userPinnedSectionTitle: LocalizedKey { LocalizedKey("User.PinnedSection.Title") }
+    static var userProfileSummaryCellTitle: LocalizedKey { LocalizedKey("User.ProfileSummaryCell.Title") }
+    static var userRepositoriesButtonTitle: LocalizedKey { LocalizedKey("User.RepositoriesButton.Title") }
+    static var userStarsCellTitle: LocalizedKey { LocalizedKey("User.StarsCell.Title") }
+    static var userUpdatedCellTitle: LocalizedKey { LocalizedKey("User.UpdatedCell.Title") }
+    static var userWatchingCellTitle: LocalizedKey { LocalizedKey("User.WatchingCell.Title") }
+    static var usersContributorsNavigationTitle: LocalizedKey { LocalizedKey("Users.ContributorsNavigation.Title") }
+    static var usersFollowersNavigationTitle: LocalizedKey { LocalizedKey("Users.FollowersNavigation.Title") }
+    static var usersFollowingNavigationTitle: LocalizedKey { LocalizedKey("Users.FollowingNavigation.Title") }
+    static var usersStargazersNavigationTitle: LocalizedKey { LocalizedKey("Users.StargazersNavigation.Title") }
+    static var usersWatchersNavigationTitle: LocalizedKey { LocalizedKey("Users.WatchersNavigation.Title") }
+}
+
+func L(_ key: LocalizedKey) -> String {
+    NSLocalizedString(key.raw, tableName: nil, bundle: .main, value: key.raw, comment: "")
+}

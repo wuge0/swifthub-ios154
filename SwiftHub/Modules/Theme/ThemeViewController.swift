@@ -17,7 +17,7 @@ class ThemeViewController: TableViewController {
     override func makeUI() {
         super.makeUI()
 
-        navigationTitle = String(localized: .themeNavigationTitle)
+        navigationTitle = L(.themeNavigationTitle)
         tableView.registerNib(ThemeCell.self)
         isHeaderRefreshEnabled = false
         isFooterRefreshEnabled = false

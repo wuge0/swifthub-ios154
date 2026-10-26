@@ -22,7 +22,7 @@ class SettingsViewController: TableViewController {
         super.makeUI()
 
         languageChanged.subscribe(onNext: { [weak self] () in
-            self?.navigationTitle = String(localized: .settingsNavigationTitle)
+            self?.navigationTitle = L(.settingsNavigationTitle)
         }).disposed(by: rx.disposeBag)
 
         tableView.registerNib(SettingCell.self)
@@ -114,14 +114,14 @@ class SettingsViewController: TableViewController {
         }
 
         let alertController = UIAlertController(title: name,
-                                                message: String(localized: .settingsLogoutAlertMessage),
+                                                message: L(.settingsLogoutAlertMessage),
                                                 preferredStyle: UIAlertController.Style.alert)
-        let logoutAction = UIAlertAction(title: String(localized: .settingsLogoutAlertConfirmButtonTitle),
+        let logoutAction = UIAlertAction(title: L(.settingsLogoutAlertConfirmButtonTitle),
                                          style: .destructive) { [weak self] (result: UIAlertAction) in
             self?.logout()
         }
 
-        let cancelAction = UIAlertAction(title: String(localized: .commonCancel),
+        let cancelAction = UIAlertAction(title: L(.commonCancel),
                                          style: .default) { (result: UIAlertAction) in
         }
 

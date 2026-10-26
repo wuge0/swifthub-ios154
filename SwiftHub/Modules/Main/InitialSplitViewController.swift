@@ -17,7 +17,7 @@ class InitialSplitViewController: TableViewController {
             navigationController?.navigationBar.prefersLargeTitles = false
         }
 
-        emptyDataSetTitle = String(localized: .initialNoResults)
+        emptyDataSetTitle = L(.initialNoResults)
         isHeaderRefreshEnabled = false
         isFooterRefreshEnabled = false
     }

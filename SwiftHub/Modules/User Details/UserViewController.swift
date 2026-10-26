@@ -19,7 +19,7 @@ private let contributionsReuseIdentifier = ContributionsCell.reuseID
 class UserViewController: TableViewController {
 
     lazy var rightBarButton: BarButtonItem = {
-        let view = BarButtonItem(image: UIImage(resource: .iconNavigationGithub), style: .done, target: nil, action: nil)
+        let view = BarButtonItem(image: UIImage(named: "icon_navigation_github"), style: .done, target: nil, action: nil)
         return view
     }()
 
@@ -251,22 +251,22 @@ class UserViewController: TableViewController {
         output.hidesFollowButton.drive(followButton.rx.isHidden).disposed(by: rx.disposeBag)
 
         output.following.map { (followed) -> UIImage? in
-            let image = followed ? UIImage(resource: .iconButtonUserX) : UIImage(resource: .iconButtonUserPlus)
+            let image = followed ? UIImage(named: "icon_button_user_x") : UIImage(named: "icon_button_user_plus")
             return image.template
         }.drive(followButton.rx.image()).disposed(by: rx.disposeBag)
 
         output.repositoriesCount.drive(onNext: { [weak self] (count) in
-            let text = String(localized: .userRepositoriesButtonTitle)
+            let text = L(.userRepositoriesButtonTitle)
             self?.repositoriesButton.setAttributedTitle(self?.attributedText(title: text, value: count), for: .normal)
         }).disposed(by: rx.disposeBag)
 
         output.followersCount.drive(onNext: { [weak self] (count) in
-            let text = String(localized: .userFollowersButtonTitle)
+            let text = L(.userFollowersButtonTitle)
             self?.followersButton.setAttributedTitle(self?.attributedText(title: text, value: count), for: .normal)
         }).disposed(by: rx.disposeBag)
 
         output.followingCount.drive(onNext: { [weak self] (count) in
-            let text = String(localized: .userFollowingButtonTitle)
+            let text = L(.userFollowingButtonTitle)
             self?.followingButton.setAttributedTitle(self?.attributedText(title: text, value: count), for: .normal)
         }).disposed(by: rx.disposeBag)
 

@@ -30,9 +30,9 @@ class LanguagesViewController: TableViewController {
         super.makeUI()
 
         languageChanged.subscribe(onNext: { [weak self] () in
-            self?.navigationTitle = String(localized: .languagesNavigationTitle)
-            self?.saveButtonItem.title = String(localized: .commonSave)
-            self?.allButton.titleForNormal = String(localized: .languagesAllButtonTitle)
+            self?.navigationTitle = L(.languagesNavigationTitle)
+            self?.saveButtonItem.title = L(.commonSave)
+            self?.allButton.titleForNormal = L(.languagesAllButtonTitle)
         }).disposed(by: rx.disposeBag)
 
         navigationItem.rightBarButtonItem = saveButtonItem

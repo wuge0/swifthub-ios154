@@ -254,11 +254,11 @@ class SearchViewModel: ViewModel, ViewModelType {
                 var title = ""
                 switch searchMode {
                 case .trending: title = language != nil ?
-                    String(localized: .searchTrendingSectionWithLanguageTitle("\(language ?? "")")) :
-                    String(localized: .searchTrendingSectionTitle)
+                    String(format: L(.searchTrendingSectionWithLanguageTitle), "\(language ?? "")") :
+                    L(.searchTrendingSectionTitle)
                 case .search: title = language != nil ?
-                    String(localized: .searchSearchSectionWithLanguageTitle("\(language ?? "")")) :
-                    String(localized: .searchSearchSectionTitle)
+                    String(format: L(.searchSearchSectionWithLanguageTitle), "\(language ?? "")") :
+                    L(.searchSearchSectionTitle)
                 }
 
                 switch searchType {
@@ -348,8 +348,8 @@ class SearchViewModel: ViewModel, ViewModelType {
         let totalCountText = Observable.combineLatest(searchType, repositorySearchElements, userSearchElements, input.languageTrigger)
             .map { (searchType, repositorySearchElements, userSearchElements, _) -> String in
                 switch searchType {
-                case .repositories: return String(localized: .searchRepositoriesTotalCountTitle("\(repositorySearchElements.totalCount.kFormatted())"))
-                case .users: return String(localized: .searchUsersTotalCountTitle("\(userSearchElements.totalCount.kFormatted())"))
+                case .repositories: return String(format: L(.searchRepositoriesTotalCountTitle), "\(repositorySearchElements.totalCount.kFormatted())")
+                case .users: return String(format: L(.searchUsersTotalCountTitle), "\(userSearchElements.totalCount.kFormatted())")
                 }
         }.asDriver(onErrorJustReturn: "")
 

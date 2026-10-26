@@ -66,11 +66,11 @@ class SettingsViewModel: ViewModel, ViewModelType {
                     accountItems.append(SettingsSectionItem.profileItem(viewModel: profileCellViewModel))
                 }
 
-                let logoutCellViewModel = SettingCellViewModel(with: String(localized: .settingsLogOutTitle), detail: nil,
-                                                               image: UIImage(resource: .iconCellLogout).template, hidesDisclosure: true)
+                let logoutCellViewModel = SettingCellViewModel(with: L(.settingsLogOutTitle), detail: nil,
+                                                               image: UIImage(named: "icon_cell_logout").template, hidesDisclosure: true)
                 accountItems.append(SettingsSectionItem.logoutItem(viewModel: logoutCellViewModel))
 
-                items.append(SettingsSection.setting(title: String(localized: .settingsAccountSectionTitle), items: accountItems))
+                items.append(SettingsSection.setting(title: L(.settingsAccountSectionTitle), items: accountItems))
             }
 
             if let swiftHubRepository = self.swiftHubRepository.value,
@@ -79,7 +79,7 @@ class SettingsViewModel: ViewModel, ViewModelType {
                 let swiftHubCellViewModel = RepositoryCellViewModel(with: swiftHubRepository)
                 let flutterHubCellViewModel = RepositoryCellViewModel(with: flutterHubRepository)
                 let flutterZxingCellViewModel = RepositoryCellViewModel(with: flutterZxingRepository)
-                items.append(SettingsSection.setting(title: String(localized: .settingsProjectsSectionTitle), items: [
+                items.append(SettingsSection.setting(title: L(.settingsProjectsSectionTitle), items: [
                     SettingsSectionItem.repositoryItem(viewModel: swiftHubCellViewModel),
                     SettingsSectionItem.repositoryItem(viewModel: flutterHubCellViewModel),
                     SettingsSectionItem.repositoryItem(viewModel: flutterZxingCellViewModel)
@@ -87,30 +87,30 @@ class SettingsViewModel: ViewModel, ViewModelType {
             }
 
             let nightModeEnabled = self.nightModeEnabled.value
-            let nightModeCellViewModel = SettingSwitchCellViewModel(with: String(localized: .settingsNightModeTitle), detail: nil,
-                                                                    image: UIImage(resource: .iconCellNightMode).template, hidesDisclosure: true, isEnabled: nightModeEnabled)
+            let nightModeCellViewModel = SettingSwitchCellViewModel(with: L(.settingsNightModeTitle), detail: nil,
+                                                                    image: UIImage(named: "icon_cell_night_mode").template, hidesDisclosure: true, isEnabled: nightModeEnabled)
             nightModeCellViewModel.switchChanged.skip(1).bind(to: self.nightModeEnabled).disposed(by: self.cellDisposeBag)
 
-            let themeCellViewModel = SettingCellViewModel(with: String(localized: .settingsThemeTitle), detail: nil,
-                                                          image: UIImage(resource: .iconCellTheme).template, hidesDisclosure: false)
+            let themeCellViewModel = SettingCellViewModel(with: L(.settingsThemeTitle), detail: nil,
+                                                          image: UIImage(named: "icon_cell_theme").template, hidesDisclosure: false)
 
-            let languageCellViewModel = SettingCellViewModel(with: String(localized: .settingsLanguageTitle), detail: self.appLanguageName(),
-                                                             image: UIImage(resource: .iconCellLanguage).template, hidesDisclosure: false)
+            let languageCellViewModel = SettingCellViewModel(with: L(.settingsLanguageTitle), detail: self.appLanguageName(),
+                                                             image: UIImage(named: "icon_cell_language").template, hidesDisclosure: false)
 
-            let removeCacheCellViewModel = SettingCellViewModel(with: String(localized: .settingsRemoveCacheTitle), detail: size.sizeFromByte(),
-                                                                image: UIImage(resource: .iconCellRemove).template, hidesDisclosure: true)
+            let removeCacheCellViewModel = SettingCellViewModel(with: L(.settingsRemoveCacheTitle), detail: size.sizeFromByte(),
+                                                                image: UIImage(named: "icon_cell_remove").template, hidesDisclosure: true)
 
-            let acknowledgementsCellViewModel = SettingCellViewModel(with: String(localized: .settingsAcknowledgementsTitle), detail: nil,
-                                                                     image: UIImage(resource: .iconCellAcknowledgements).template, hidesDisclosure: false)
+            let acknowledgementsCellViewModel = SettingCellViewModel(with: L(.settingsAcknowledgementsTitle), detail: nil,
+                                                                     image: UIImage(named: "icon_cell_acknowledgements").template, hidesDisclosure: false)
 
             items += [
-                SettingsSection.setting(title: String(localized: .settingsPreferencesSectionTitle), items: [
+                SettingsSection.setting(title: L(.settingsPreferencesSectionTitle), items: [
                     SettingsSectionItem.nightModeItem(viewModel: nightModeCellViewModel),
                     SettingsSectionItem.themeItem(viewModel: themeCellViewModel),
                     SettingsSectionItem.languageItem(viewModel: languageCellViewModel),
                     SettingsSectionItem.removeCacheItem(viewModel: removeCacheCellViewModel)
                 ]),
-                SettingsSection.setting(title: String(localized: .settingsSupportSectionTitle), items: [
+                SettingsSection.setting(title: L(.settingsSupportSectionTitle), items: [
                     SettingsSectionItem.acknowledgementsItem(viewModel: acknowledgementsCellViewModel)
                 ])
             ]

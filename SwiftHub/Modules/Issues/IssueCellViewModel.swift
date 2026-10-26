@@ -23,7 +23,7 @@ class IssueCellViewModel: DefaultTableViewCellViewModel {
         detail.accept(issue.detail())
         attributedDetail.accept(issue.attributedDetail())
         imageUrl.accept(issue.user?.avatarUrl)
-        badge.accept(UIImage(resource: .iconCellBadgeIssue).template)
+        badge.accept(UIImage(named: "icon_cell_badge_issue").template)
         badgeColor.accept(issue.state == .open ? UIColor.Material.green : UIColor.Material.red)
     }
 }
@@ -40,7 +40,7 @@ extension Issue {
     func attributedDetail() -> NSAttributedString {
         var texts: [NSAttributedString] = []
         if let commentsString = comments?.string.styled([.foregroundColor: UIColor.text()]) {
-            let commentsImage = UIImage(resource: .iconCellBadgeComment).filled(withColor: .secondary()).scaled(toHeight: 15)?.styled([.baselineOffset: -3]) ?? NSAttributedString()
+            let commentsImage = UIImage(named: "icon_cell_badge_comment").filled(withColor: .secondary()).scaled(toHeight: 15)?.styled([.baselineOffset: -3]) ?? NSAttributedString()
             texts.append(NSAttributedString.composed(of: [
                 commentsImage, .space, commentsString, .spacer(width: 10)
             ]))

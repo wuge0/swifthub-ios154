@@ -18,7 +18,7 @@ private let languagesReuseIdentifier = LanguagesCell.reuseID
 class RepositoryViewController: TableViewController {
 
     lazy var rightBarButton: BarButtonItem = {
-        let view = BarButtonItem(image: UIImage(resource: .iconNavigationGithub), style: .done, target: nil, action: nil)
+        let view = BarButtonItem(image: UIImage(named: "icon_navigation_github"), style: .done, target: nil, action: nil)
         return view
     }()
 
@@ -246,22 +246,22 @@ class RepositoryViewController: TableViewController {
         output.hidesStarButton.drive(starButton.rx.isHidden).disposed(by: rx.disposeBag)
 
         output.starring.map { (starred) -> UIImage? in
-            let image = starred ? UIImage(resource: .iconButtonUnstar) : UIImage(resource: .iconButtonStar)
+            let image = starred ? UIImage(named: "icon_button_unstar") : UIImage(named: "icon_button_star")
             return image.template
         }.drive(starButton.rx.image()).disposed(by: rx.disposeBag)
 
         output.watchersCount.drive(onNext: { [weak self] (count) in
-            let text = String(localized: .repositoryWatchersButtonTitle)
+            let text = L(.repositoryWatchersButtonTitle)
             self?.watchersButton.setAttributedTitle(self?.attributedText(title: text, value: count), for: .normal)
         }).disposed(by: rx.disposeBag)
 
         output.starsCount.drive(onNext: { [weak self] (count) in
-            let text = String(localized: .repositoryStarsButtonTitle)
+            let text = L(.repositoryStarsButtonTitle)
             self?.starsButton.setAttributedTitle(self?.attributedText(title: text, value: count), for: .normal)
         }).disposed(by: rx.disposeBag)
 
         output.forksCount.drive(onNext: { [weak self] (count) in
-            let text = String(localized: .repositoryForksButtonTitle)
+            let text = L(.repositoryForksButtonTitle)
             self?.forksButton.setAttributedTitle(self?.attributedText(title: text, value: count), for: .normal)
         }).disposed(by: rx.disposeBag)
 

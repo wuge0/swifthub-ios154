@@ -24,7 +24,7 @@ class UserCellViewModel: DefaultTableViewCellViewModel {
         detail.accept("\((user.contributions != nil) ? "\(user.contributions ?? 0) commits": (user.name ?? ""))")
         attributedDetail.accept(user.attributetDetail())
         imageUrl.accept(user.avatarUrl)
-        badge.accept(UIImage(resource: .iconCellBadgeUser).template)
+        badge.accept(UIImage(named: "icon_cell_badge_user").template)
         badgeColor.accept(UIColor.Material.green900)
 
         following.accept(user.viewerIsFollowing ?? false)
@@ -46,13 +46,13 @@ extension User {
     func attributetDetail() -> NSAttributedString? {
         var texts: [NSAttributedString] = []
         if let repositoriesString = repositoriesCount?.string.styled([.foregroundColor: UIColor.text()]) {
-            let repositoriesImage = UIImage(resource: .iconCellBadgeRepository).filled(withColor: UIColor.text()).scaled(toHeight: 15)?.styled([.baselineOffset: -3]) ?? NSAttributedString()
+            let repositoriesImage = UIImage(named: "icon_cell_badge_repository").filled(withColor: UIColor.text()).scaled(toHeight: 15)?.styled([.baselineOffset: -3]) ?? NSAttributedString()
             texts.append(NSAttributedString.composed(of: [
                 repositoriesImage, .space, repositoriesString, .space, .tab
             ]))
         }
         if let followersString = followers?.kFormatted().styled([.foregroundColor: UIColor.text()]) {
-            let followersImage = UIImage(resource: .iconCellBadgeCollaborator).filled(withColor: UIColor.text()).scaled(toHeight: 15)?.styled([.baselineOffset: -3]) ?? NSAttributedString()
+            let followersImage = UIImage(named: "icon_cell_badge_collaborator").filled(withColor: UIColor.text()).scaled(toHeight: 15)?.styled([.baselineOffset: -3]) ?? NSAttributedString()
             texts.append(NSAttributedString.composed(of: [
                 followersImage, .space, followersString
             ]))

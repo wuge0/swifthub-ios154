@@ -21,7 +21,7 @@ class SearchBar: UISearchBar {
     }
 
     func makeUI() {
-        placeholder = String(localized: .commonSearch)
+        placeholder = L(.commonSearch)
         isTranslucent = false
         searchBarStyle = .minimal
 

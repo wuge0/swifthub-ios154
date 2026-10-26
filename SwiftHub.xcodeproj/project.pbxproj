@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03FDA39579361D5870AFB9AC /* LocalizedKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA9BFB7BD5F7AD60AAD28FC /* LocalizedKeys.swift */; };
 		0700EAEE21C815E600F979A7 /* TrendingGithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700EAED21C815E600F979A7 /* TrendingGithubAPI.swift */; };
 		0700EAF021C823CD00F979A7 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700EAEF21C823CD00F979A7 /* Language.swift */; };
 		0709DD7A220A1CA800F379FA /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0709DD79220A1CA800F379FA /* UserTests.swift */; };
@@ -279,6 +280,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5FA9BFB7BD5F7AD60AAD28FC /* LocalizedKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedKeys.swift; sourceTree = "<group>"; };
 		0700EAED21C815E600F979A7 /* TrendingGithubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingGithubAPI.swift; sourceTree = "<group>"; };
 		0700EAEF21C823CD00F979A7 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		0703ED1022186E1D0017136C /* .jazzy.yaml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .jazzy.yaml; sourceTree = SOURCE_ROOT; };
@@ -962,6 +964,7 @@
 				0703ED1022186E1D0017136C /* .jazzy.yaml */,
 				07FC33801FFFE52A00D53888 /* .swiftlint.yml */,
 				C762C66E1E1D58B200C09EBD /* Configs.swift */,
+				5FA9BFB7BD5F7AD60AAD28FC /* LocalizedKeys.swift */,
 				075AB1A920F2988F00B7E923 /* Pods-SwiftHub-acknowledgements.plist */,
 				07A4ADB121E89899001D198F /* PRIVACY_POLICY.md */,
 				07FC33841FFFE54800D53888 /* README.md */,
@@ -1992,6 +1995,7 @@
 				127830A556D357E8F22176CD /* EmptyDataSetView.swift in Sources */,
 				596662237BA475778B9C0685 /* NSAttributedString+SwiftHub.swift in Sources */,
 				C4819E7EE7831CF1A4E0B3C9 /* Codable+SwiftHub.swift in Sources */,
+				03FDA39579361D5870AFB9AC /* LocalizedKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,8 +18,8 @@ enum PullRequestSegments: Int {
 
     var title: String {
         switch self {
-        case .open: return String(localized: .issuesOpenSegmentTitle)
-        case .closed: return String(localized: .issuesClosedSegmentTitle)
+        case .open: return L(.issuesOpenSegmentTitle)
+        case .closed: return L(.issuesClosedSegmentTitle)
         }
     }
 

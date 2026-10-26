@@ -16,7 +16,7 @@ private let reuseIdentifier = ContentCell.reuseID
 class ContentsViewController: TableViewController {
 
     lazy var rightBarButton: BarButtonItem = {
-        let view = BarButtonItem(image: UIImage(resource: .iconNavigationGithub), style: .done, target: nil, action: nil)
+        let view = BarButtonItem(image: UIImage(named: "icon_navigation_github"), style: .done, target: nil, action: nil)
         return view
     }()
 

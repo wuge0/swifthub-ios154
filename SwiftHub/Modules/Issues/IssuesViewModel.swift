@@ -72,7 +72,7 @@ class IssuesViewModel: ViewModel, ViewModelType {
             })
 
         let navigationTitle = repository.map({ (mode) -> String in
-            return String(localized: .eventsNavigationTitle)
+            return L(.eventsNavigationTitle)
         }).asDriver(onErrorJustReturn: "")
 
         let imageUrl = repository.map({ (repository) -> URL? in

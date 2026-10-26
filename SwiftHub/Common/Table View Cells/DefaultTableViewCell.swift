@@ -68,7 +68,7 @@ class DefaultTableViewCell: TableViewCell {
 
     lazy var rightImageView: ImageView = {
         let view = ImageView(frame: CGRect())
-        view.image = UIImage(resource: .iconCellDisclosure).template
+        view.image = UIImage(named: "icon_cell_disclosure").template
         view.snp.makeConstraints({ (make) in
             make.width.equalTo(20)
         })

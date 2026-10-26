@@ -13,17 +13,17 @@ import RxSwift
 class SourceViewController: ViewController {
 
     lazy var historyBarButton: BarButtonItem = {
-        let view = BarButtonItem(image: UIImage(resource: .iconNavigationHistory), style: .done, target: nil, action: nil)
+        let view = BarButtonItem(image: UIImage(named: "icon_navigation_history"), style: .done, target: nil, action: nil)
         return view
     }()
 
     lazy var themesBarButton: BarButtonItem = {
-        let view = BarButtonItem(image: UIImage(resource: .iconNavigationTheme), style: .done, target: nil, action: nil)
+        let view = BarButtonItem(image: UIImage(named: "icon_navigation_theme"), style: .done, target: nil, action: nil)
         return view
     }()
 
     lazy var languagesBarButton: BarButtonItem = {
-        let view = BarButtonItem(image: UIImage(resource: .iconNavigationLanguage), style: .done, target: nil, action: nil)
+        let view = BarButtonItem(image: UIImage(named: "icon_navigation_language"), style: .done, target: nil, action: nil)
         return view
     }()
 
@@ -97,7 +97,7 @@ class SourceViewController: ViewController {
         output.highlightedCode.subscribe(onNext: { [weak self] (text) in
             self?.textView.attributedText = text
         }, onError: { [weak self] (error) in
-            self?.showAlert(title: String(localized: .commonError),
+            self?.showAlert(title: L(.commonError),
                             message: error.localizedDescription,
                             buttonTitles: nil,
                             highlightedButtonIndex: nil,

@@ -18,9 +18,9 @@ enum NotificationSegments: Int {
 
     var title: String {
         switch self {
-        case .unread: return String(localized: .notificationsUnreadSegmentTitle)
-        case .participating: return String(localized: .notificationsParticipatingSegmentTitle)
-        case .all: return String(localized: .notificationsAllSegmentTitle)
+        case .unread: return L(.notificationsUnreadSegmentTitle)
+        case .participating: return L(.notificationsParticipatingSegmentTitle)
+        case .all: return L(.notificationsAllSegmentTitle)
         }
     }
 }
@@ -28,7 +28,7 @@ enum NotificationSegments: Int {
 class NotificationsViewController: TableViewController {
 
     lazy var rightBarButton: BarButtonItem = {
-        let view = BarButtonItem(image: UIImage(resource: .iconCellCheck), style: .done, target: nil, action: nil)
+        let view = BarButtonItem(image: UIImage(named: "icon_cell_check"), style: .done, target: nil, action: nil)
         return view
     }()
 
@@ -91,9 +91,9 @@ class NotificationsViewController: TableViewController {
         }).disposed(by: rx.disposeBag)
 
         output.markAsReadSelected.drive(onNext: { [weak self] () in
-            let title = String(localized: .commonSuccess)
-            let description = String(localized: .notificationsMarkAsReadSuccess)
-            let image = UIImage(resource: .iconToastSuccess)
+            let title = L(.commonSuccess)
+            let description = L(.notificationsMarkAsReadSuccess)
+            let image = UIImage(named: "icon_toast_success")
             self?.tableView.makeToast(description, title: title, image: image)
         }).disposed(by: rx.disposeBag)
     }

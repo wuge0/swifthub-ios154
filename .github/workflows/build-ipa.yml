@@ -66,8 +66,10 @@ jobs:
           </plist>
           PLIST
 
-          brew install ldid || true
-          ldid -S ent.plist "$APP/${APP_NAME}" || echo "ldid 失败，TrollStore 侧仍可安装，但 Keychain 可能报 -34018"
+          # ldid 2.1.5 对这类 arm64 iOS 二进制会 assert 失败，改用 codesign 做 ad-hoc 签名
+          codesign -f -s - --entitlements ent.plist "$APP/${APP_NAME}"
+          echo "--- 校验签名中的 entitlements ---"
+          codesign -d --entitlements :- "$APP/${APP_NAME}" 2>/dev/null | head -20
 
       - name: 打包 IPA
         run: |

@@ -1,3 +1,26 @@
+> **这是 [khoren93/SwiftHub](https://github.com/khoren93/SwiftHub) 的 iOS 15.4 移植分支**
+>
+> 上游 master 以 iOS 17 为基线，本分支把它降级到 **iOS 15.4**，并新增了一个 GitHub 趋势榜小组件。
+> 产物为**未签名 IPA**，用 [TrollStore](https://github.com/opa334/TrollStore) 安装（无需证书、不过期）。
+>
+> | 改动 | 说明 |
+> | --- | --- |
+> | 部署目标 | `IPHONEOS_DEPLOYMENT_TARGET` 17.0 → **15.4**（工程 4 处 + Podfile） |
+> | 本地化 | 129 处 `String(localized:)`（iOS 16+）→ `L(.key)` + `NSLocalizedString` 包装 |
+> | 图片 | 108 处 `UIImage(resource:)`（iOS 16+）→ `UIImage(named:)!` |
+> | 新增 | `SwiftHubWidget` 扩展：GitHub Trending 小组件（small / medium / large） |
+> | 构建 | `.github/workflows/build-ipa.yml` 免签出包；`scripts/build-unsigned-ipa.sh` 本地出包 |
+>
+> ```bash
+> # 拉下来直接编（需要 macOS + Xcode 16 及以上）
+> pod install --repo-update
+> open SwiftHub.xcworkspace      # scheme: SwiftHub
+> ```
+>
+> 详细说明见 [`IOS15-PORT.md`](IOS15-PORT.md)。上游文档见下方原文。
+>
+> ---
+
 <p align="center">
   <img src="https://github.com/khoren93/SwiftHub/blob/master/Sketch/app_logo.svg" alt="SwiftHub logo" height="80" >
 </p>

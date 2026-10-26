@@ -1450,8 +1450,8 @@
 				A094994F1E1D1CB600EFDE29 /* Frameworks */,
 				A09499501E1D1CB600EFDE29 /* Resources */,
 				3FF22C3403C6B8870D286DEA /* [CP] Embed Pods Frameworks */,
-				A024C7C421BAA83200FEA133 /* Crashlytics */,
 				2442AB9498169BDD64F05DAC /* Embed Foundation Extensions */,
+				A024C7C421BAA83200FEA133 /* Crashlytics */,
 			);
 			buildRules = (
 			);

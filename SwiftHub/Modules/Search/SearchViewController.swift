@@ -136,7 +136,7 @@ enum SortUserItems: Int {
 class SearchViewController: TableViewController {
 
     lazy var rightBarButton: BarButtonItem = {
-        let view = BarButtonItem(image: UIImage(named: "icon_navigation_language"), style: .done, target: nil, action: nil)
+        let view = BarButtonItem(image: UIImage(named: "icon_navigation_language")!, style: .done, target: nil, action: nil)
         return view
     }()
 

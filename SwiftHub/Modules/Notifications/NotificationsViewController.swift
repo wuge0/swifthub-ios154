@@ -28,7 +28,7 @@ enum NotificationSegments: Int {
 class NotificationsViewController: TableViewController {
 
     lazy var rightBarButton: BarButtonItem = {
-        let view = BarButtonItem(image: UIImage(named: "icon_cell_check"), style: .done, target: nil, action: nil)
+        let view = BarButtonItem(image: UIImage(named: "icon_cell_check")!, style: .done, target: nil, action: nil)
         return view
     }()
 
@@ -93,7 +93,7 @@ class NotificationsViewController: TableViewController {
         output.markAsReadSelected.drive(onNext: { [weak self] () in
             let title = L(.commonSuccess)
             let description = L(.notificationsMarkAsReadSuccess)
-            let image = UIImage(named: "icon_toast_success")
+            let image = UIImage(named: "icon_toast_success")!
             self?.tableView.makeToast(description, title: title, image: image)
         }).disposed(by: rx.disposeBag)
     }

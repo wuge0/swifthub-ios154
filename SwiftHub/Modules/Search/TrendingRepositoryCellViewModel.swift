@@ -21,7 +21,7 @@ class TrendingRepositoryCellViewModel: DefaultTableViewCellViewModel {
         detail.accept(repository.descriptionField)
         attributedDetail.accept(repository.attributetDetail(since: since.title))
         imageUrl.accept(repository.avatarUrl)
-        badge.accept(UIImage(named: "icon_cell_badge_repository").template)
+        badge.accept(UIImage(named: "icon_cell_badge_repository")!.template)
         badgeColor.accept(UIColor.Material.green900)
     }
 }
@@ -34,7 +34,7 @@ extension TrendingRepositoryCellViewModel {
 
 extension TrendingRepository {
     func attributetDetail(since: String) -> NSAttributedString {
-        let starImage = UIImage(named: "icon_cell_badge_star").filled(withColor: .text()).scaled(toHeight: 15)?.styled([.baselineOffset: -3]) ?? NSAttributedString()
+        let starImage = UIImage(named: "icon_cell_badge_star")!.filled(withColor: .text()).scaled(toHeight: 15)?.styled([.baselineOffset: -3]) ?? NSAttributedString()
         let starsString = (stars ?? 0).kFormatted().styled([.foregroundColor: UIColor.text()])
         let currentPeriodStarsString = "\((currentPeriodStars ?? 0).kFormatted()) \(since.lowercased())".styled([.foregroundColor: UIColor.text()])
         let languageColorShape = "●".styled([.foregroundColor: UIColor(hexString: languageColor ?? "") ?? .clear])

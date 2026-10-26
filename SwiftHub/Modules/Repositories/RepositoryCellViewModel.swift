@@ -24,7 +24,7 @@ class RepositoryCellViewModel: DefaultTableViewCellViewModel {
         detail.accept(repository.descriptionField)
         attributedDetail.accept(repository.attributetDetail())
         imageUrl.accept(repository.owner?.avatarUrl)
-        badge.accept(UIImage(named: "icon_cell_badge_repository").template)
+        badge.accept(UIImage(named: "icon_cell_badge_repository")!.template)
         badgeColor.accept(UIColor.Material.green900)
 
         starring.accept(repository.viewerHasStarred ?? false)
@@ -43,7 +43,7 @@ extension Repository {
         var texts: [NSAttributedString] = []
 
         let starsString = (stargazersCount ?? 0).kFormatted().styled([.foregroundColor: UIColor.text()])
-        let starsImage = UIImage(named: "icon_cell_badge_star").filled(withColor: UIColor.text()).scaled(toHeight: 15)?.styled([.baselineOffset: -3]) ?? NSAttributedString()
+        let starsImage = UIImage(named: "icon_cell_badge_star")!.filled(withColor: UIColor.text()).scaled(toHeight: 15)?.styled([.baselineOffset: -3]) ?? NSAttributedString()
         texts.append(NSAttributedString.composed(of: [
             starsImage, .space, starsString, .space, .tab
             ]))

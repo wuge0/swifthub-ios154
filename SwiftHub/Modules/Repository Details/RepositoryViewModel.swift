@@ -167,7 +167,7 @@ class RepositoryViewModel: ViewModel, ViewModelType {
             if let parentName = repository.parentFullname {
                 let parentCellViewModel = RepositoryDetailCellViewModel(with: L(.repositoryParentCellTitle),
                                                                         detail: parentName,
-                                                                        image: UIImage(named: "icon_cell_git_fork").template,
+                                                                        image: UIImage(named: "icon_cell_git_fork")!.template,
                                                                         hidesDisclosure: false)
                 items.append(RepositorySectionItem.parentItem(viewModel: parentCellViewModel))
             }
@@ -180,7 +180,7 @@ class RepositoryViewModel: ViewModel, ViewModelType {
                 // Language
                 let languageCellViewModel = RepositoryDetailCellViewModel(with: L(.repositoryLanguageCellTitle),
                                                                           detail: language,
-                                                                          image: UIImage(named: "icon_cell_git_language").template,
+                                                                          image: UIImage(named: "icon_cell_git_language")!.template,
                                                                           hidesDisclosure: true)
                 items.append(RepositorySectionItem.languageItem(viewModel: languageCellViewModel))
             }
@@ -189,7 +189,7 @@ class RepositoryViewModel: ViewModel, ViewModelType {
             if let size = repository.size {
                 let sizeCellViewModel = RepositoryDetailCellViewModel(with: L(.repositorySizeCellTitle),
                                                                       detail: size.sizeFromKB(),
-                                                                      image: UIImage(named: "icon_cell_size").template,
+                                                                      image: UIImage(named: "icon_cell_size")!.template,
                                                                       hidesDisclosure: true)
                 items.append(RepositorySectionItem.sizeItem(viewModel: sizeCellViewModel))
             }
@@ -198,7 +198,7 @@ class RepositoryViewModel: ViewModel, ViewModelType {
             if let created = repository.createdAt {
                 let createdCellViewModel = RepositoryDetailCellViewModel(with: L(.repositoryCreatedCellTitle),
                                                                          detail: created.toRelative(),
-                                                                         image: UIImage(named: "icon_cell_created").template,
+                                                                         image: UIImage(named: "icon_cell_created")!.template,
                                                                          hidesDisclosure: true)
                 items.append(RepositorySectionItem.createdItem(viewModel: createdCellViewModel))
             }
@@ -207,7 +207,7 @@ class RepositoryViewModel: ViewModel, ViewModelType {
             if let updated = repository.updatedAt {
                 let updatedCellViewModel = RepositoryDetailCellViewModel(with: L(.repositoryUpdatedCellTitle),
                                                                          detail: updated.toRelative(),
-                                                                         image: UIImage(named: "icon_cell_updated").template,
+                                                                         image: UIImage(named: "icon_cell_updated")!.template,
                                                                          hidesDisclosure: true)
                 items.append(RepositorySectionItem.updatedItem(viewModel: updatedCellViewModel))
             }
@@ -216,7 +216,7 @@ class RepositoryViewModel: ViewModel, ViewModelType {
             if let homepage = repository.homepage, homepage.isNotEmpty {
                 let homepageCellViewModel = RepositoryDetailCellViewModel(with: L(.repositoryHomepageCellTitle),
                                                                          detail: homepage,
-                                                                         image: UIImage(named: "icon_cell_link").template,
+                                                                         image: UIImage(named: "icon_cell_link")!.template,
                                                                          hidesDisclosure: false)
                 items.append(RepositorySectionItem.homepageItem(viewModel: homepageCellViewModel))
             }
@@ -224,49 +224,49 @@ class RepositoryViewModel: ViewModel, ViewModelType {
             // Issues
             let issuesCellViewModel = RepositoryDetailCellViewModel(with: L(.repositoryIssuesCellTitle),
                                                                     detail: repository.openIssuesCount?.string ?? "",
-                                                                    image: UIImage(named: "icon_cell_issues").template,
+                                                                    image: UIImage(named: "icon_cell_issues")!.template,
                                                                     hidesDisclosure: false)
             items.append(RepositorySectionItem.issuesItem(viewModel: issuesCellViewModel))
 
             // Pull Requests
             let pullRequestsCellViewModel = RepositoryDetailCellViewModel(with: L(.repositoryPullRequestsCellTitle),
                                                                           detail: repository.pullRequestsCount?.string ?? "",
-                                                                          image: UIImage(named: "icon_cell_git_pull_request").template,
+                                                                          image: UIImage(named: "icon_cell_git_pull_request")!.template,
                                                                           hidesDisclosure: false)
             items.append(RepositorySectionItem.pullRequestsItem(viewModel: pullRequestsCellViewModel))
 
             // Commits
             let commitsCellViewModel = RepositoryDetailCellViewModel(with: L(.repositoryCommitsCellTitle),
                                                                      detail: repository.commitsCount?.string ?? "",
-                                                                     image: UIImage(named: "icon_cell_git_commit").template,
+                                                                     image: UIImage(named: "icon_cell_git_commit")!.template,
                                                                      hidesDisclosure: false)
             items.append(RepositorySectionItem.commitsItem(viewModel: commitsCellViewModel))
 
             // Branches
             let branchesCellViewModel = RepositoryDetailCellViewModel(with: L(.repositoryBranchesCellTitle),
                                                                       detail: self.selectedBranch.value ?? repository.defaultBranch,
-                                                                      image: UIImage(named: "icon_cell_git_branch").template,
+                                                                      image: UIImage(named: "icon_cell_git_branch")!.template,
                                                                       hidesDisclosure: false)
             items.append(RepositorySectionItem.branchesItem(viewModel: branchesCellViewModel))
 
             // Releases
             let releasesCellViewModel = RepositoryDetailCellViewModel(with: L(.repositoryReleasesCellTitle),
                                                                       detail: repository.releasesCount?.string ?? "",
-                                                                      image: UIImage(named: "icon_cell_releases").template,
+                                                                      image: UIImage(named: "icon_cell_releases")!.template,
                                                                       hidesDisclosure: false)
             items.append(RepositorySectionItem.releasesItem(viewModel: releasesCellViewModel))
 
             // Contributors
             let contributorsCellViewModel = RepositoryDetailCellViewModel(with: L(.repositoryContributorsCellTitle),
                                                                           detail: repository.contributorsCount?.string ?? "",
-                                                                          image: UIImage(named: "icon_cell_company").template,
+                                                                          image: UIImage(named: "icon_cell_company")!.template,
                                                                           hidesDisclosure: false)
             items.append(RepositorySectionItem.contributorsItem(viewModel: contributorsCellViewModel))
 
             // Events
             let eventsCellViewModel = RepositoryDetailCellViewModel(with: L(.repositoryEventsCellTitle),
                                                                     detail: "",
-                                                                    image: UIImage(named: "icon_cell_events").template,
+                                                                    image: UIImage(named: "icon_cell_events")!.template,
                                                                     hidesDisclosure: false)
             items.append(RepositorySectionItem.eventsItem(viewModel: eventsCellViewModel))
 
@@ -274,7 +274,7 @@ class RepositoryViewModel: ViewModel, ViewModelType {
                 // Notifications
                 let notificationsCellViewModel = RepositoryDetailCellViewModel(with: L(.repositoryNotificationsCellTitle),
                                                                                detail: "",
-                                                                               image: UIImage(named: "icon_tabbar_activity").template,
+                                                                               image: UIImage(named: "icon_tabbar_activity")!.template,
                                                                                hidesDisclosure: false)
                 items.append(RepositorySectionItem.notificationsItem(viewModel: notificationsCellViewModel))
             }
@@ -282,14 +282,14 @@ class RepositoryViewModel: ViewModel, ViewModelType {
             // Source
             let sourceCellViewModel = RepositoryDetailCellViewModel(with: L(.repositorySourceCellTitle),
                                                                     detail: "",
-                                                                    image: UIImage(named: "icon_cell_source").template,
+                                                                    image: UIImage(named: "icon_cell_source")!.template,
                                                                     hidesDisclosure: false)
             items.append(RepositorySectionItem.sourceItem(viewModel: sourceCellViewModel))
 
             // Stars history
             let starHistoryCellViewModel = RepositoryDetailCellViewModel(with: L(.repositoryStarsHistoryCellTitle),
                                                                          detail: Configs.Network.starHistoryBaseUrl,
-                                                                         image: UIImage(named: "icon_cell_stars_history").template,
+                                                                         image: UIImage(named: "icon_cell_stars_history")!.template,
                                                                          hidesDisclosure: false)
             items.append(RepositorySectionItem.starHistoryItem(viewModel: starHistoryCellViewModel))
 

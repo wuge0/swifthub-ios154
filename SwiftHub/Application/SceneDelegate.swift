@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 var style = ToastManager.shared.style
                 style.backgroundColor = connected ? UIColor.Material.green: UIColor.Material.red
                 let message = connected ? L(.toastConnectionBackMessage): L(.toastConnectionLostMessage)
-                let image = connected ? UIImage(named: "icon_toast_success"): UIImage(named: "icon_toast_warning")
+                let image = connected ? UIImage(named: "icon_toast_success")!: UIImage(named: "icon_toast_warning")!
                 if let view = self?.window?.rootViewController?.view {
                     view.makeToast(message, position: .bottom, image: image, style: style)
                 }

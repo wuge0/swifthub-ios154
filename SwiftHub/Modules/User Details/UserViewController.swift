@@ -19,7 +19,7 @@ private let contributionsReuseIdentifier = ContributionsCell.reuseID
 class UserViewController: TableViewController {
 
     lazy var rightBarButton: BarButtonItem = {
-        let view = BarButtonItem(image: UIImage(named: "icon_navigation_github"), style: .done, target: nil, action: nil)
+        let view = BarButtonItem(image: UIImage(named: "icon_navigation_github")!, style: .done, target: nil, action: nil)
         return view
     }()
 
@@ -251,7 +251,7 @@ class UserViewController: TableViewController {
         output.hidesFollowButton.drive(followButton.rx.isHidden).disposed(by: rx.disposeBag)
 
         output.following.map { (followed) -> UIImage? in
-            let image = followed ? UIImage(named: "icon_button_user_x") : UIImage(named: "icon_button_user_plus")
+            let image = followed ? UIImage(named: "icon_button_user_x")! : UIImage(named: "icon_button_user_plus")!
             return image.template
         }.drive(followButton.rx.image()).disposed(by: rx.disposeBag)
 

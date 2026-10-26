@@ -161,7 +161,7 @@ class UserViewModel: ViewModel, ViewModelType {
             // Contributions
             let contributionsCellViewModel = ContributionsCellViewModel(with: L(.userContributionsCellTitle),
                                                                         detail: "\(Configs.Network.githubSkylineBaseUrl)",
-                                                                        image: UIImage(named: "icon_button_github").template,
+                                                                        image: UIImage(named: "icon_button_github")!.template,
                                                                         contributionCalendar: user.contributionCalendar)
             items.append(UserSectionItem.contributionsItem(viewModel: contributionsCellViewModel))
 
@@ -169,7 +169,7 @@ class UserViewModel: ViewModel, ViewModelType {
             if let created = user.createdAt {
                 let createdCellViewModel = UserDetailCellViewModel(with: L(.userCreatedCellTitle),
                                                                    detail: created.toRelative(),
-                                                                   image: UIImage(named: "icon_cell_created").template,
+                                                                   image: UIImage(named: "icon_cell_created")!.template,
                                                                    hidesDisclosure: true)
                 items.append(UserSectionItem.createdItem(viewModel: createdCellViewModel))
             }
@@ -178,7 +178,7 @@ class UserViewModel: ViewModel, ViewModelType {
             if let updated = user.updatedAt {
                 let updatedCellViewModel = UserDetailCellViewModel(with: L(.userUpdatedCellTitle),
                                                                    detail: updated.toRelative(),
-                                                                   image: UIImage(named: "icon_cell_updated").template,
+                                                                   image: UIImage(named: "icon_cell_updated")!.template,
                                                                    hidesDisclosure: true)
                 items.append(UserSectionItem.updatedItem(viewModel: updatedCellViewModel))
             }
@@ -187,14 +187,14 @@ class UserViewModel: ViewModel, ViewModelType {
                 // Stars
                 let starsCellViewModel = UserDetailCellViewModel(with: L(.userStarsCellTitle),
                                                                  detail: user.starredRepositoriesCount?.string ?? "",
-                                                                 image: UIImage(named: "icon_cell_star").template,
+                                                                 image: UIImage(named: "icon_cell_star")!.template,
                                                                  hidesDisclosure: false)
                 items.append(UserSectionItem.starsItem(viewModel: starsCellViewModel))
 
                 // Watching
                 let watchingCellViewModel = UserDetailCellViewModel(with: L(.userWatchingCellTitle),
                                                                     detail: user.watchingCount?.string ?? "",
-                                                                    image: UIImage(named: "icon_cell_theme").template,
+                                                                    image: UIImage(named: "icon_cell_theme")!.template,
                                                                     hidesDisclosure: false)
                 items.append(UserSectionItem.watchingItem(viewModel: watchingCellViewModel))
             }
@@ -202,7 +202,7 @@ class UserViewModel: ViewModel, ViewModelType {
             // Events
             let eventsCellViewModel = UserDetailCellViewModel(with: L(.userEventsCellTitle),
                                                               detail: "",
-                                                              image: UIImage(named: "icon_cell_events").template,
+                                                              image: UIImage(named: "icon_cell_events")!.template,
                                                               hidesDisclosure: false)
             items.append(UserSectionItem.eventsItem(viewModel: eventsCellViewModel))
 
@@ -210,7 +210,7 @@ class UserViewModel: ViewModel, ViewModelType {
             if let company = user.company, company.isNotEmpty {
                 let companyCellViewModel = UserDetailCellViewModel(with: L(.userCompanyCellTitle),
                                                                    detail: company,
-                                                                   image: UIImage(named: "icon_cell_company").template,
+                                                                   image: UIImage(named: "icon_cell_company")!.template,
                                                                    hidesDisclosure: false)
                 items.append(UserSectionItem.companyItem(viewModel: companyCellViewModel))
             }
@@ -219,7 +219,7 @@ class UserViewModel: ViewModel, ViewModelType {
             if let blog = user.blog, blog.isNotEmpty {
                 let companyCellViewModel = UserDetailCellViewModel(with: L(.userBlogCellTitle),
                                                                    detail: blog,
-                                                                   image: UIImage(named: "icon_cell_link").template,
+                                                                   image: UIImage(named: "icon_cell_link")!.template,
                                                                    hidesDisclosure: false)
                 items.append(UserSectionItem.blogItem(viewModel: companyCellViewModel))
             }
@@ -227,7 +227,7 @@ class UserViewModel: ViewModel, ViewModelType {
             // Profile Summary
             let profileSummaryCellViewModel = UserDetailCellViewModel(with: L(.userProfileSummaryCellTitle),
                                                                       detail: "\(Configs.Network.profileSummaryBaseUrl)",
-                                                                      image: UIImage(named: "icon_cell_profile_summary").template,
+                                                                      image: UIImage(named: "icon_cell_profile_summary")!.template,
                                                                       hidesDisclosure: false)
             items.append(UserSectionItem.profileSummaryItem(viewModel: profileSummaryCellViewModel))
 

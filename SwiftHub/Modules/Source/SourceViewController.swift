@@ -13,17 +13,17 @@ import RxSwift
 class SourceViewController: ViewController {
 
     lazy var historyBarButton: BarButtonItem = {
-        let view = BarButtonItem(image: UIImage(named: "icon_navigation_history"), style: .done, target: nil, action: nil)
+        let view = BarButtonItem(image: UIImage(named: "icon_navigation_history")!, style: .done, target: nil, action: nil)
         return view
     }()
 
     lazy var themesBarButton: BarButtonItem = {
-        let view = BarButtonItem(image: UIImage(named: "icon_navigation_theme"), style: .done, target: nil, action: nil)
+        let view = BarButtonItem(image: UIImage(named: "icon_navigation_theme")!, style: .done, target: nil, action: nil)
         return view
     }()
 
     lazy var languagesBarButton: BarButtonItem = {
-        let view = BarButtonItem(image: UIImage(named: "icon_navigation_language"), style: .done, target: nil, action: nil)
+        let view = BarButtonItem(image: UIImage(named: "icon_navigation_language")!, style: .done, target: nil, action: nil)
         return view
     }()
 

@@ -23,7 +23,7 @@ class ReleaseCellViewModel: DefaultTableViewCellViewModel {
         detail.accept(release.publishedAt?.toRelative())
         secondDetail.accept(release.body)
         imageUrl.accept(release.author?.avatarUrl)
-        badge.accept(UIImage(named: "icon_cell_badge_tag").template)
+        badge.accept(UIImage(named: "icon_cell_badge_tag")!.template)
         badgeColor.accept(UIColor.Material.green)
     }
 }

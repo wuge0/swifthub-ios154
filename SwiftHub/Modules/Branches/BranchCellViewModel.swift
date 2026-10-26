@@ -18,6 +18,6 @@ class BranchCellViewModel: DefaultTableViewCellViewModel {
         self.branch = branch
         super.init()
         title.accept(branch.name)
-        image.accept(UIImage(named: "icon_cell_git_branch").template)
+        image.accept(UIImage(named: "icon_cell_git_branch")!.template)
     }
 }

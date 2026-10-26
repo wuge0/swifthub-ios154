@@ -23,7 +23,7 @@ class PullRequestCellViewModel: DefaultTableViewCellViewModel {
         detail.accept(pullRequest.detail())
         attributedDetail.accept(pullRequest.attributedDetail())
         imageUrl.accept(pullRequest.user?.avatarUrl)
-        badge.accept(UIImage(named: "icon_cell_badge_pull_request").template)
+        badge.accept(UIImage(named: "icon_cell_badge_pull_request")!.template)
         badgeColor.accept(pullRequest.state == .open ? UIColor.Material.green : UIColor.Material.purple)
     }
 }

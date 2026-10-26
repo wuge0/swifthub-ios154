@@ -43,7 +43,7 @@ class LoginViewController: ViewController {
     }()
 
     lazy var basicLogoImageView: ImageView = {
-        let view = ImageView(image: UIImage(named: "image_no_result").template)
+        let view = ImageView(image: UIImage(named: "image_no_result")!.template)
         return view
     }()
 
@@ -64,7 +64,7 @@ class LoginViewController: ViewController {
 
     lazy var basicLoginButton: Button = {
         let view = Button()
-        view.imageForNormal = UIImage(named: "icon_button_github")
+        view.imageForNormal = UIImage(named: "icon_button_github")!
         view.centerTextAndImage(spacing: inset)
         return view
     }()
@@ -79,7 +79,7 @@ class LoginViewController: ViewController {
     }()
 
     lazy var oAuthLogoImageView: ImageView = {
-        let view = ImageView(image: UIImage(named: "image_no_result").template)
+        let view = ImageView(image: UIImage(named: "image_no_result")!.template)
         return view
     }()
 
@@ -101,7 +101,7 @@ class LoginViewController: ViewController {
 
     lazy var oAuthLoginButton: Button = {
         let view = Button()
-        view.imageForNormal = UIImage(named: "icon_button_github")
+        view.imageForNormal = UIImage(named: "icon_button_github")!
         view.centerTextAndImage(spacing: inset)
         return view
     }()
@@ -116,7 +116,7 @@ class LoginViewController: ViewController {
     }()
 
     lazy var personalLogoImageView: ImageView = {
-        let view = ImageView(image: UIImage(named: "image_no_result").template)
+        let view = ImageView(image: UIImage(named: "image_no_result")!.template)
         return view
     }()
 
@@ -146,7 +146,7 @@ class LoginViewController: ViewController {
 
     lazy var personalLoginButton: Button = {
         let view = Button()
-        view.imageForNormal = UIImage(named: "icon_button_github")
+        view.imageForNormal = UIImage(named: "icon_button_github")!
         view.centerTextAndImage(spacing: inset)
         return view
     }()
@@ -229,7 +229,7 @@ class LoginViewController: ViewController {
         output.hidesOAuthLoginView.drive(oAuthLoginStackView.rx.isHidden).disposed(by: rx.disposeBag)
 
         error.subscribe(onNext: { [weak self] (error) in
-            self?.view.makeToast(error.description, title: error.title, image: UIImage(named: "icon_toast_warning"))
+            self?.view.makeToast(error.description, title: error.title, image: UIImage(named: "icon_toast_warning")!)
         }).disposed(by: rx.disposeBag)
     }
 }

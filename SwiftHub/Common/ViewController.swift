@@ -41,7 +41,7 @@ class ViewController: UIViewController, Navigatable {
     let spaceBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
 
     var emptyDataSetTitle = L(.commonNoResults)
-    var emptyDataSetImage: UIImage? = UIImage(named: "image_no_result")
+    var emptyDataSetImage: UIImage? = UIImage(named: "image_no_result")!
     var emptyDataSetImageTintColor = BehaviorRelay<UIColor?>(value: nil)
 
     lazy var emptyDataSetView = EmptyDataSetView()
@@ -63,7 +63,7 @@ class ViewController: UIViewController, Navigatable {
     }()
 
     lazy var closeBarButton: BarButtonItem = {
-        let view = BarButtonItem(image: UIImage(named: "icon_navigation_close"),
+        let view = BarButtonItem(image: UIImage(named: "icon_navigation_close")!,
                                  style: .plain,
                                  target: self,
                                  action: nil)

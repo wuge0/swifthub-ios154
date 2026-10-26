@@ -34,11 +34,11 @@ enum HomeTabBarItem: Int {
 
     var image: UIImage? {
         switch self {
-        case .search: return UIImage(named: "icon_tabbar_search")
-        case .news: return UIImage(named: "icon_tabbar_news")
-        case .notifications: return UIImage(named: "icon_tabbar_activity")
-        case .settings: return UIImage(named: "icon_tabbar_settings")
-        case .login: return UIImage(named: "icon_tabbar_login")
+        case .search: return UIImage(named: "icon_tabbar_search")!
+        case .news: return UIImage(named: "icon_tabbar_news")!
+        case .notifications: return UIImage(named: "icon_tabbar_activity")!
+        case .settings: return UIImage(named: "icon_tabbar_settings")!
+        case .login: return UIImage(named: "icon_tabbar_login")!
         }
     }
 

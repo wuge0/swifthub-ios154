@@ -26,10 +26,10 @@ class ContentCellViewModel: DefaultTableViewCellViewModel {
 extension ContentType {
     func image() -> UIImage? {
         switch self {
-        case .file: return UIImage(named: "icon_cell_file")
-        case .dir: return UIImage(named: "icon_cell_dir")
-        case .submodule: return UIImage(named: "icon_cell_submodule")
-        case .symlink: return UIImage(named: "icon_cell_submodule")
+        case .file: return UIImage(named: "icon_cell_file")!
+        case .dir: return UIImage(named: "icon_cell_dir")!
+        case .submodule: return UIImage(named: "icon_cell_submodule")!
+        case .symlink: return UIImage(named: "icon_cell_submodule")!
         case .unknown: return nil
         }
     }

@@ -19,8 +19,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: 环境信息
+      - name: 选择最新 Xcode
         run: |
+          echo "可用："; ls -d /Applications/Xcode*.app
+          XC=$(ls -d /Applications/Xcode*.app | sort -V | tail -1)
+          echo "选用：$XC"
+          sudo xcode-select -s "$XC"
           xcodebuild -version
           pod --version || echo "CocoaPods 缺失"
 

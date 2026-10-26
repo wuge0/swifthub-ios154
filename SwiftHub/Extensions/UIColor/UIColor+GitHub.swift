@@ -57,20 +57,20 @@ extension UIColor {
 extension UIColor {
 
     convenience init(hex: UInt32, alpha: CGFloat = 1.0) {
-        let r = CGFloat((hex & 0xFF0000) >> 16) / 255.0
-        let g = CGFloat((hex & 0x00FF00) >> 8) / 255.0
-        let b = CGFloat(hex & 0x0000FF) / 255.0
-        self.init(red: r, green: g, blue: b, alpha: alpha)
+        let red = CGFloat((hex & 0xFF0000) >> 16) / 255.0
+        let green = CGFloat((hex & 0x00FF00) >> 8) / 255.0
+        let blue = CGFloat(hex & 0x0000FF) / 255.0
+        self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
 
     /// 解析 "#RRGGBB" / "RRGGBB" / "#RGB"，失败返回 nil
     static func fromHexString(_ string: String?) -> UIColor? {
-        guard var s = string?.trimmingCharacters(in: .whitespacesAndNewlines), !s.isEmpty else { return nil }
-        if s.hasPrefix("#") { s.removeFirst() }
-        if s.count == 3 {
-            s = s.map { "\($0)\($0)" }.joined()
+        guard var hexString = string?.trimmingCharacters(in: .whitespacesAndNewlines), !hexString.isEmpty else { return nil }
+        if hexString.hasPrefix("#") { hexString.removeFirst() }
+        if hexString.count == 3 {
+            hexString = hexString.map { "\($0)\($0)" }.joined()
         }
-        guard s.count == 6, let value = UInt32(s, radix: 16) else { return nil }
+        guard hexString.count == 6, let value = UInt32(hexString, radix: 16) else { return nil }
         return UIColor(hex: value)
     }
 }

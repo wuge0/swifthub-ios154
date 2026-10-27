@@ -22,6 +22,7 @@ class NavigationController: UINavigationController {
         interactivePopGestureRecognizer?.delegate = nil // Enable default iOS back swipe gesture
 
 //        navigationBar.isTranslucent = false
+        navigationBar.prefersLargeTitles = true
         navigationBar.backIndicatorImage = UIImage(named: "icon_navigation_back")!
         navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "icon_navigation_back")!
 

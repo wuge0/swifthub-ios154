@@ -46,6 +46,17 @@ extension UIColor {
         static let darkAccent = UIColor(githubHex: 0x2F81F7)
         static let darkSuccess = UIColor(githubHex: 0x3FB950)
 
+        // MARK: - 状态色（Issue / PR）
+
+        /// Open：#1F883D
+        static let open = UIColor(githubHex: 0x1F883D)
+        /// Merged：#8250DF
+        static let merged = UIColor(githubHex: 0x8250DF)
+        /// Closed：#CF222E
+        static let closed = UIColor(githubHex: 0xCF222E)
+        /// Draft
+        static let draft = UIColor(githubHex: 0x6E7781)
+
         // MARK: - 语义色（语言点等）
 
         static let languageDotFallback = UIColor(githubHex: 0x8B949E)

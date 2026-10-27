@@ -102,7 +102,14 @@ class RepositoryViewController: TableViewController {
     override func makeUI() {
         super.makeUI()
 
-        headerView.theme.backgroundColor = themeService.attribute { $0.primaryDark }
+        // 官方：头部是独立卡片（主题底色 + 圆角 + 描边），不是整片灰底
+        headerView.theme.backgroundColor = themeService.attribute { $0.primary }
+        headerView.layerCornerRadius = Configs.BaseDimensions.cornerRadius + 3
+        headerView.layerBorderWidth = Configs.BaseDimensions.borderWidth
+        themeService.typeStream.observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (themeType) in
+                self?.headerView.layerBorderColor = themeType.associatedObject.separator
+            }).disposed(by: rx.disposeBag)
         detailLabel.theme.textColor = themeService.attribute { $0.text }
 
         navigationItem.rightBarButtonItem = rightBarButton

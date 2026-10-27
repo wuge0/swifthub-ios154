@@ -74,6 +74,7 @@ enum HomeTabBarItem: Int {
         let item = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
         item.tag = rawValue
         vc.tabBarItem = item
+        // 大标题由根页面自己的 usesLargeTitle 决定，见各 Tab 的 ViewController
         return vc
     }
 }

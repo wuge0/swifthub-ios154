@@ -32,6 +32,9 @@ class ViewController: UIViewController, Navigatable {
     var automaticallyAdjustsLeftBarButtonItem = true
     var canOpenFlex = true
 
+    /// 仅 Tab 根页面覆写为 true，使用官方的大标题样式
+    var usesLargeTitle: Bool { false }
+
     var navigationTitle = "" {
         didSet {
             navigationItem.title = navigationTitle
@@ -94,6 +97,8 @@ class ViewController: UIViewController, Navigatable {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // 官方只在根页面用大标题，二级页面一律紧凑
+        navigationItem.largeTitleDisplayMode = usesLargeTitle ? .always : .never
         makeUI()
         bindViewModel()
 

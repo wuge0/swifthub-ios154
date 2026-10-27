@@ -18,6 +18,8 @@ private let repositoryReuseIdentifier = RepositoryCell.reuseID
 
 class SettingsViewController: TableViewController {
 
+    override var usesLargeTitle: Bool { true }
+
     override func makeUI() {
         super.makeUI()
 

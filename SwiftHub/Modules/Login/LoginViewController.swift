@@ -25,6 +25,8 @@ enum LoginSegments: Int {
 
 class LoginViewController: ViewController {
 
+    override var usesLargeTitle: Bool { true }
+
     lazy var segmentedControl: SegmentedControl = {
         let view = SegmentedControl(sectionTitles: [])
         view.snp.makeConstraints({ (make) in

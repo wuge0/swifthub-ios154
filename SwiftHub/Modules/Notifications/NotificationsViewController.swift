@@ -27,6 +27,8 @@ enum NotificationSegments: Int {
 
 class NotificationsViewController: TableViewController {
 
+    override var usesLargeTitle: Bool { true }
+
     lazy var rightBarButton: BarButtonItem = {
         let view = BarButtonItem(image: UIImage(named: "icon_cell_check")!, style: .done, target: nil, action: nil)
         return view

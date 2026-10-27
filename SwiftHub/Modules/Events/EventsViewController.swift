@@ -26,6 +26,8 @@ enum EventSegments: Int {
 
 class EventsViewController: TableViewController {
 
+    override var usesLargeTitle: Bool { true }
+
     lazy var segmentedControl: SegmentedControl = {
         let items = [EventSegments.received.title,
                      EventSegments.performed.title]

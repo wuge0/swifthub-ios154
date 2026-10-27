@@ -46,8 +46,8 @@ class HomeTabBarViewModel: ViewModel, ViewModelType {
             let viewModel = SearchViewModel(provider: provider)
             return viewModel
         case .news:
-            let user = User.currentUser()!
-            let viewModel = EventsViewModel(mode: .user(user: user), provider: provider)
+            // 官方 Home 是关注流，这里用关注对象的公开事件聚合
+            let viewModel = EventsViewModel(mode: .following, provider: provider)
             return viewModel
         case .notifications:
             let viewModel = NotificationsViewModel(mode: .mine, provider: provider)

@@ -77,6 +77,11 @@ class EventsViewController: TableViewController {
         super.bindViewModel()
         guard let viewModel = viewModel as? EventsViewModel else { return }
 
+        // 关注流是多个人的事件合并结果，没有稳定的分页语义
+        if case .following = viewModel.mode.value {
+            isFooterRefreshEnabled = false
+        }
+
         let segmentSelected = Observable.of(segmentedControl.segmentSelection.map { EventSegments(rawValue: $0)! }).merge()
         let refresh = Observable.of(Observable.just(()), headerRefreshTrigger, segmentSelected.mapToVoid().skip(1)).merge()
         let input = EventsViewModel.Input(headerRefresh: refresh,

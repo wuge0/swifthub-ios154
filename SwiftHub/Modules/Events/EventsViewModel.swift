@@ -14,6 +14,8 @@ import RxDataSources
 enum EventsMode {
     case repository(repository: Repository)
     case user(user: User)
+    /// 首页关注流：没有官方 feed 接口，用"关注对象的公开事件"聚合近似
+    case following
 }
 
 class EventsViewModel: ViewModel, ViewModelType {
@@ -48,6 +50,10 @@ class EventsViewModel: ViewModel, ViewModelType {
             }
         case .user(let user):
             if let login = user.login {
+                analytics.log(.userEvents(login: login))
+            }
+        case .following:
+            if let login = User.currentUser()?.login {
                 analytics.log(.userEvents(login: login))
             }
         }
@@ -91,19 +97,24 @@ class EventsViewModel: ViewModel, ViewModelType {
             })
 
         let navigationTitle = mode.map({ (mode) -> String in
-            return L(.eventsNavigationTitle)
+            switch mode {
+            case .following: return L(.homeTabBarHomeTitle)
+            default: return L(.eventsNavigationTitle)
+            }
         }).asDriver(onErrorJustReturn: "")
 
         let imageUrl = mode.map({ (mode) -> URL? in
             switch mode {
             case .repository(let repository): return repository.owner?.avatarUrl?.url
             case .user(let user): return user.avatarUrl?.url
+            case .following: return User.currentUser()?.avatarUrl?.url
             }
         }).asDriver(onErrorJustReturn: nil)
 
         let hidesSegment = mode.map { (mode) -> Bool in
             switch mode {
             case .repository: return true
+            case .following: return true
             case .user(let user):
                 switch user.type {
                 case .user: return false
@@ -125,6 +136,8 @@ class EventsViewModel: ViewModel, ViewModelType {
         switch mode.value {
         case .repository(let repository):
             request = provider.repositoryEvents(owner: repository.owner?.login ?? "", repo: repository.name ?? "", page: page)
+        case .following:
+            request = followingFeed()
         case .user(let user):
             switch user.type {
             case .user:
@@ -144,4 +157,30 @@ class EventsViewModel: ViewModel, ViewModelType {
                 return viewModel
             })}
     }
+
+    // MARK: - 关注流
+
+    /// 一次聚合多少个关注对象的事件。太大首屏会慢，也会吃限流额度
+    private static let feedFollowingLimit = 12
+
+    /// GitHub 没有开放 "following feed" 接口（官方走私有时间线），
+    /// 这里取关注对象最近的公开事件按时间合并，是公开 API 下最接近的近似。
+    private func followingFeed() -> Single<[Event]> {
+        guard let login = User.currentUser()?.login else { return .just([]) }
+        return provider.userFollowing(username: login, page: 1)
+            .flatMap { [weak self] users -> Single<[Event]> in
+                guard let self = self else { return .just([]) }
+                let singles = users.prefix(EventsViewModel.feedFollowingLimit).compactMap { user -> Single<[Event]>? in
+                    guard let login = user.login else { return nil }
+                    return self.provider.userReceivedEvents(username: login, page: 1)
+                        .catchAndReturn([])
+                }
+                guard !singles.isEmpty else { return .just([]) }
+                return Single.zip(singles).map { batches in
+                    batches.flatMap { $0 }
+                        .sorted { ($0.createdAt ?? .distantPast) > ($1.createdAt ?? .distantPast) }
+                }
+            }
+    }
+
 }
